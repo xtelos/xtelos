@@ -1,18 +1,18 @@
-## Hey there, I'm Dylan
+## 👋 Hey there, I'm Dylan
 
-🚀 Developer by trade, giga-nerd by my own standards
+🚀 Developer by trade, giga-nerd by my own standards.
 
-I thrive on tackling **unique and complex** problems that keep most people awake at night. For me, it's the best time to blast some divorced dad rock and just hammer away at a solution.
+I thrive on tackling **unique, complex problems**—the kind that keep most people up at night. For me, that’s prime time to throw on some divorced-dad rock and hammer away at a solution until it finally clicks.
 
-Currently, I work full-time as an **Applications Developer at Software Consulting Services, LLC**, where I build and maintain production web systems. Outside of that, I’m also the **Co-Owner of Cloud City Computing, LLC**, where I focus on innovating solutions for problems I genuinely care about. The difference between the two is a passion for an industry versus a passion for personal problems I've faced as a developer.
+I currently work full-time as an **Applications Developer at Software Consulting Services, LLC**, where I build and maintain production web systems. Alongside that, I’m the **Co-Owner of Cloud City Computing, LLC**, where I focus on creating solutions for problems I genuinely care about. The difference between the two is simple: one is passion for an industry, the other is passion born from real problems I’ve faced as a developer.
 
 ---
 
-## What I Do For a Living (And For Funsies)
+## 🛠️ What I Do (For a Living — and for Funsies)
 
 - 💻 Full-stack web development  
-- 🛠️ Building tools that make workflows better, faster, and cleaner  
-- 🔍 Refactoring legacy code into something future-proof  
+- 🧰 Building tools that make workflows faster, cleaner, and less painful  
+- 🔍 Refactoring legacy code into something maintainable and future-proof  
 - 🧩 Solving edge cases most people pretend don’t exist  
 
 ---
@@ -34,16 +34,19 @@ These are the languages and tools I reach for most often:
 
 ## 🔭 What I’m Into Lately
 
-- Improving developer experience and tooling
-  - I've been working with some reactive frameworks like ReactJS, but also learning legacy web frameworks like working in 20 year old PHP applications that just need a little love to get them spruced up again.
-- Performance tuning & cleanup of real-world applications
-  - I couldn't even tell you how many problems exist in deployed legacy applications that would make your skin crawl. **BUT**, finding them and fixing them is one of the most rewarding things you could ever do as a developer
-- Building things that *actually* get used
-  - Everyone loves the fun little projects but building something that helps real people is priceless.
+- **Developer experience & tooling**  
+  Working with modern reactive frameworks like React while also spelunking through 20-year-old PHP applications that just need a little love to shine again.
+
+- **Performance tuning & real-world cleanup**  
+  Legacy production systems hide horrors that would make your skin crawl—but finding and fixing them is one of the most rewarding parts of the job.
+
+- **Building things that actually get used**  
+  Fun side projects are great, but shipping something that helps real people never gets old.
 
 ---
 
 ## 📫 Let’s Connect
 
-If you’re interested in collaborating, swapping ideas, or just talking shop — feel free to reach out.
+If you’re interested in collaborating, swapping ideas, or just talking shop, feel free to reach out:
 
+- 💼 **LinkedIn:** [linkedin.com/in/dylan-fodor](https://www.linkedin.com/in/dylan-fodor/)
