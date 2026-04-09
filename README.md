@@ -1,23 +1,6 @@
-## 👋 Hey there, I'm Dylan
-
-🚀 Developer by trade, giga-nerd by my own standards.
-
-I thrive on tackling **unique, complex problems**—the kind that keep most people up at night. For me, that’s prime time to throw on some divorced-dad rock and hammer away at a solution until it finally clicks.
-
-I currently work full-time as an **Applications Developer at Software Consulting Services, LLC**, where I build and maintain production web systems. Alongside that, I’m the **Co-Owner of Cloud City Computing, LLC**, where I focus on creating solutions for problems I genuinely care about. The difference between the two is simple: one is passion for an industry, the other is passion born from real problems I’ve faced as a developer.
-
----
-
-## 🛠️ What I Do (For a Living — and for Funsies)
-
-- 💻 Full-stack web development  
-- 🧰 Building tools that make workflows faster, cleaner, and less painful  
-- 🔍 Refactoring legacy code into something maintainable and future-proof  
-- 🧩 Solving edge cases most people pretend don’t exist  
-
----
-
-## 🧰 Daily Drivers & Experience
+Developer by trade, giga-nerd by my own standards.
+- Full-stack web development  
+- Building tools that make workflows faster, cleaner, and less painful  
 
 These are the languages and tools I reach for most often:
 
@@ -32,21 +15,8 @@ These are the languages and tools I reach for most often:
 
 ---
 
-## 🔭 What I’m Into Lately
-
-- **Developer experience & tooling**  
-  Working with modern reactive frameworks like React while also spelunking through 20-year-old PHP applications that just need a little love to shine again.
-
-- **Performance tuning & real-world cleanup**  
-  Legacy production systems hide horrors that would make your skin crawl—but finding and fixing them is one of the most rewarding parts of the job.
-
-- **Building things that actually get used**  
-  Fun side projects are great, but shipping something that helps real people never gets old.
-
----
-
-## 📫 Let’s Connect
+## Let’s Connect
 
 If you’re interested in collaborating, swapping ideas, or just talking shop, feel free to reach out:
 
-- 💼 **LinkedIn:** [linkedin.com/in/dylan-fodor](https://www.linkedin.com/in/dylan-fodor/)
+- **LinkedIn:** [linkedin.com/in/dylan-fodor](https://www.linkedin.com/in/dylan-fodor/)
