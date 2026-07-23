@@ -73,8 +73,15 @@ def out_tools(c):
     return "".join(f'<tspan fill="{c["accent"]}">{n}/</tspan><tspan> </tspan>' for n in names)
 
 
-def out_focus(c):
-    return f'<tspan fill="{c["warm"]}">Building fast, reliable systems</tspan>'
+def out_focus(cursor_t):
+    def spans(c):
+        # The cursor rides in the same text run as the words, so it inherits
+        # the viewer's real mono font metrics instead of a guessed advance.
+        return (
+            f'<tspan fill="{c["warm"]}">Building fast, reliable systems</tspan>'
+            f'<tspan class="cursor" fill="{c["text"]}" style="animation-delay:{cursor_t:.2f}s">▋</tspan>'
+        )
+    return spans
 
 
 def build(theme_name):
@@ -85,16 +92,7 @@ def build(theme_name):
     tl.command("ls ~/tools", colors)
     tl.output(out_tools, colors)
     tl.command("cat focus.txt", colors)
-    tl.output(out_focus, colors)
-
-    cursor_t = tl.t - GAP + 0.15
-    cursor_y = FIRST_LINE_Y + (tl.line - 1) * LINE_H
-    # 31 chars of "Building fast, reliable systems" at ~9px/char in a 15px mono
-    cursor = (
-        f'<rect class="cursor" x="{BODY_X + 31 * 9.05 + 6}" y="{cursor_y - 13}" '
-        f'width="9" height="17" fill="{colors["text"]}" '
-        f'style="animation-delay:{cursor_t:.2f}s"/>'
-    )
+    tl.output(out_focus(tl.t + 0.15), colors)
 
     style = """
 .c { opacity: 0; animation: appear 0.01s steps(1, end) forwards; }
@@ -108,7 +106,7 @@ def build(theme_name):
 """
     return window(
         theme_name, WIDTH, HEIGHT, "dylan@xtelos - zsh",
-        "\n".join(tl.rows) + "\n" + cursor, style,
+        "\n".join(tl.rows), style,
     )
 
 

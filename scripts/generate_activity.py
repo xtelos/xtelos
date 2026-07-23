@@ -10,6 +10,7 @@ import datetime
 import json
 import os
 import pathlib
+import re
 import subprocess
 import sys
 import urllib.request
@@ -43,13 +44,17 @@ def token():
     if tok:
         return tok
     # Local runs: borrow the gh CLI's token.
-    run = subprocess.run(["gh", "auth", "token"], capture_output=True, text=True)
-    if run.returncode == 0 and run.stdout.strip():
-        return run.stdout.strip()
+    try:
+        run = subprocess.run(["gh", "auth", "token"], capture_output=True, text=True)
+        if run.returncode == 0 and run.stdout.strip():
+            return run.stdout.strip()
+    except FileNotFoundError:
+        pass
     hosts = pathlib.Path.home() / ".config" / "gh" / "hosts.yml"
-    for line in hosts.read_text().splitlines():
-        if "oauth_token:" in line:
-            return line.split("oauth_token:", 1)[1].strip()
+    if hosts.exists():
+        for line in hosts.read_text().splitlines():
+            if "oauth_token:" in line:
+                return line.split("oauth_token:", 1)[1].strip()
     raise RuntimeError("No GITHUB_TOKEN and no gh CLI token found")
 
 
@@ -79,9 +84,16 @@ def contribution_days():
 
 
 def latest_public_push():
-    events = gh_request(f"https://api.github.com/users/{LOGIN}/events/public")
+    # Default-branch pushes only, so this row cannot contradict the
+    # contribution counts (branch pushes are not calendar contributions).
+    events = gh_request(
+        f"https://api.github.com/users/{LOGIN}/events/public?per_page=100"
+    )
     for ev in events:
-        if ev["type"] == "PushEvent":
+        if ev["type"] == "PushEvent" and ev["payload"].get("ref") in (
+            "refs/heads/main",
+            "refs/heads/master",
+        ):
             return ev["repo"]["name"], ev["created_at"][:10]
     return None
 
@@ -120,13 +132,16 @@ def build(theme_name, stats, refreshed):
         f'<text x="{BODY_X}" y="{FIRST_LINE_Y - LINE_H}" xml:space="preserve">'
         f'<tspan fill="{c["prompt"]}">➜ </tspan><tspan fill="{c["tilde"]}">~ </tspan>'
         f'<tspan fill="{c["text"]}">tail activity.log</tspan></text>',
-        row(0, "last 7 days", f'<tspan fill="{c["text"]}">{d7} contributions</tspan>'),
-        row(1, "last 30 days", f'<tspan fill="{c["text"]}">{d30} contributions</tspan>'),
+        row(0, "last 7 days", f'<tspan fill="{c["text"]}">{d7} contribution{"" if d7 == 1 else "s"}</tspan>'),
+        row(1, "last 30 days", f'<tspan fill="{c["text"]}">{d30} contribution{"" if d30 == 1 else "s"}</tspan>'),
         row(2, "30-day trend", f'<tspan fill="{c["green"]}">{esc(spark)}</tspan>'),
         row(3, "latest public push", push_spans),
     ]
-    title = f"dylan@xtelos - zsh · activity · refreshed {refreshed}"
+    title = f"dylan@xtelos - zsh · activity · updated {refreshed}"
     return window(theme_name, WIDTH, HEIGHT, title, "\n".join(rows))
+
+
+STAMP = re.compile(r"updated \d{4}-\d{2}-\d{2}")
 
 
 def main():
@@ -138,12 +153,18 @@ def main():
         sparkline(counts[-30:]),
         latest_public_push(),
     )
-    refreshed = datetime.date.today().isoformat()
+    refreshed = datetime.datetime.now(datetime.timezone.utc).date().isoformat()
     assets = pathlib.Path(__file__).resolve().parent.parent / "assets"
     assets.mkdir(exist_ok=True)
     for theme in ("dark", "light"):
         path = assets / f"activity-{theme}.svg"
-        path.write_text(build(theme, stats, refreshed))
+        svg = build(theme, stats, refreshed)
+        # The date stamp alone is not a change; skip so the workflow's
+        # commit-if-changed guard actually means something.
+        if path.exists() and STAMP.sub("", path.read_text()) == STAMP.sub("", svg):
+            print(f"unchanged {path}")
+            continue
+        path.write_text(svg)
         print(f"wrote {path}")
 
 
