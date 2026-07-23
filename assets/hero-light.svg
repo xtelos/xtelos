@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830 252" width="830" height="252" role="img">
+<style>
+text { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace; font-size: 15px; }
+.title { font-size: 13px; fill: #57606a; }
+
+.c { opacity: 0; animation: appear 0.01s steps(1, end) forwards; }
+@keyframes appear { to { opacity: 1; } }
+.cursor { opacity: 0; animation: blink 1.1s steps(1, end) infinite; }
+@keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .c { animation-delay: 0s !important; }
+  .cursor { animation: none; opacity: 1; }
+}
+
+</style>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#fbfcfd"/>
+<stop offset="1" stop-color="#ffffff"/>
+</linearGradient>
+<clipPath id="win"><rect x="1" y="1" width="828" height="250" rx="11"/></clipPath>
+</defs>
+<rect x="0.5" y="0.5" width="829" height="251" rx="11.5" fill="url(#bg)" stroke="#d0d7de"/>
+<g clip-path="url(#win)">
+<rect x="1" y="1" width="828" height="35" fill="#f6f8fa"/>
+<line x1="1" y1="36" x2="829" y2="36" stroke="#d0d7de" stroke-width="1"/>
+</g>
+<circle cx="22" cy="18.0" r="6" fill="#ff5f57"/><circle cx="42" cy="18.0" r="6" fill="#febc2e"/><circle cx="62" cy="18.0" r="6" fill="#28c840"/>
+<text class="title" x="415.0" y="22.5" text-anchor="middle">dylan@xtelos - zsh</text>
+<text x="22" y="74" xml:space="preserve" fill="#1f2328"><tspan class="c" fill="#1a7f37" style="animation-delay:0.20s">➜ </tspan><tspan class="c" fill="#0969da" style="animation-delay:0.20s">~ </tspan><tspan class="c" style="animation-delay:0.50s">w</tspan><tspan class="c" style="animation-delay:0.56s">h</tspan><tspan class="c" style="animation-delay:0.62s">o</tspan><tspan class="c" style="animation-delay:0.68s">a</tspan><tspan class="c" style="animation-delay:0.74s">m</tspan><tspan class="c" style="animation-delay:0.80s">i</tspan></text>
+<text class="c" x="22" y="101" xml:space="preserve" style="animation-delay:1.16s"><tspan fill="#1f2328">Dylan Fodor</tspan><tspan fill="#6e7781"> · </tspan><tspan fill="#1f2328">Full-Stack Developer</tspan></text>
+<text x="22" y="128" xml:space="preserve" fill="#1f2328"><tspan class="c" fill="#1a7f37" style="animation-delay:1.71s">➜ </tspan><tspan class="c" fill="#0969da" style="animation-delay:1.71s">~ </tspan><tspan class="c" style="animation-delay:2.01s">l</tspan><tspan class="c" style="animation-delay:2.07s">s</tspan><tspan class="c" style="animation-delay:2.13s"> </tspan><tspan class="c" style="animation-delay:2.19s">~</tspan><tspan class="c" style="animation-delay:2.25s">/</tspan><tspan class="c" style="animation-delay:2.31s">t</tspan><tspan class="c" style="animation-delay:2.37s">o</tspan><tspan class="c" style="animation-delay:2.43s">o</tspan><tspan class="c" style="animation-delay:2.49s">l</tspan><tspan class="c" style="animation-delay:2.55s">s</tspan></text>
+<text class="c" x="22" y="155" xml:space="preserve" style="animation-delay:2.91s"><tspan fill="#0969da">argus/</tspan><tspan> </tspan><tspan fill="#0969da">aegis/</tspan><tspan> </tspan><tspan fill="#0969da">iris/</tspan><tspan> </tspan><tspan fill="#0969da">demeter/</tspan><tspan> </tspan><tspan fill="#0969da">ariadne/</tspan><tspan> </tspan><tspan fill="#0969da">delphi/</tspan><tspan> </tspan></text>
+<text x="22" y="182" xml:space="preserve" fill="#1f2328"><tspan class="c" fill="#1a7f37" style="animation-delay:3.46s">➜ </tspan><tspan class="c" fill="#0969da" style="animation-delay:3.46s">~ </tspan><tspan class="c" style="animation-delay:3.76s">c</tspan><tspan class="c" style="animation-delay:3.82s">a</tspan><tspan class="c" style="animation-delay:3.88s">t</tspan><tspan class="c" style="animation-delay:3.94s"> </tspan><tspan class="c" style="animation-delay:4.00s">f</tspan><tspan class="c" style="animation-delay:4.06s">o</tspan><tspan class="c" style="animation-delay:4.12s">c</tspan><tspan class="c" style="animation-delay:4.18s">u</tspan><tspan class="c" style="animation-delay:4.24s">s</tspan><tspan class="c" style="animation-delay:4.30s">.</tspan><tspan class="c" style="animation-delay:4.36s">t</tspan><tspan class="c" style="animation-delay:4.42s">x</tspan><tspan class="c" style="animation-delay:4.48s">t</tspan></text>
+<text class="c" x="22" y="209" xml:space="preserve" style="animation-delay:4.84s"><tspan fill="#953800">Building fast, reliable systems</tspan><tspan class="cursor" fill="#1f2328" style="animation-delay:4.99s">▋</tspan></text>
+</svg>
