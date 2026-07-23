@@ -307,12 +307,15 @@ def build(layout, theme_name, stats):
         push_spans = span(when, c["dim"]) + span("  ") + span(repo, c["accent"])
     else:
         push_spans = span("none lately; private repos, mostly"[:budget], c["dim"])
-    plural = "" if stats["d7"] == 1 else "s"
+    unit = "pull request" + ("" if stats["merged_short"] == 1 else "s")
+    repos = f"{stats['repos']} repositor" + ("y" if stats["repos"] == 1 else "ies")
     s.dotted(
         [
-            ("last 7 days", span(f"{stats['d7']} contribution{plural}", c["text"])),
-            ("last 30 days", span(f"{stats['d30']} contributions", c["text"])),
+            ("merged, last 7d", span(f"{stats['merged_short']} {unit}", c["text"])),
+            ("merged, last 30d",
+             span(f"{stats['merged_long']} across {repos}", c["text"])),
             ("30-day trend", spark_spans(stats["spark"], c)),
+            ("active days", span(f"{stats['active_days']} of the last 30", c["text"])),
             ("latest public push", push_spans),
         ],
         c["text"],

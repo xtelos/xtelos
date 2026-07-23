@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 3157" width="460" height="3157" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 3205" width="460" height="3205" role="img">
 <style>
 text { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace; font-size: 15px; }
 .title { font-size: 13.1px; fill: #6b6d80; }
@@ -18,9 +18,9 @@ text { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono'
 <stop offset="0" stop-color="#1b1d29"/>
 <stop offset="1" stop-color="#15161e"/>
 </linearGradient>
-<clipPath id="win"><rect x="1" y="1" width="458" height="3155" rx="11"/></clipPath>
+<clipPath id="win"><rect x="1" y="1" width="458" height="3203" rx="11"/></clipPath>
 </defs>
-<rect x="0.5" y="0.5" width="459" height="3156" rx="11.5" fill="url(#bg)" stroke="#2a2b3a"/>
+<rect x="0.5" y="0.5" width="459" height="3204" rx="11.5" fill="url(#bg)" stroke="#2a2b3a"/>
 <g clip-path="url(#win)">
 <rect x="1" y="1" width="458" height="29" fill="#1b1c26"/>
 <line x1="1" y1="30" x2="459" y2="30" stroke="#2a2b3a" stroke-width="1"/>
@@ -110,30 +110,32 @@ text { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono'
 <text class="c" x="16" y="2389" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.25s"><tspan fill="#e6edf3">  sole developer: ad builder, checkout</tspan></text>
 <text class="c" x="16" y="2413" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.26s"><tspan fill="#e6edf3">  funnel, payments, approvals, email.</tspan></text>
 <text x="16" y="2461" xml:space="preserve" fill="#e6edf3"><tspan class="c" fill="#7ee787" style="animation-delay:3.33s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:3.33s">~ </tspan><tspan class="c" style="animation-delay:3.38s">t</tspan><tspan class="c" style="animation-delay:3.38s">a</tspan><tspan class="c" style="animation-delay:3.39s">i</tspan><tspan class="c" style="animation-delay:3.40s">l</tspan><tspan class="c" style="animation-delay:3.40s"> </tspan><tspan class="c" style="animation-delay:3.41s">a</tspan><tspan class="c" style="animation-delay:3.42s">c</tspan><tspan class="c" style="animation-delay:3.42s">t</tspan><tspan class="c" style="animation-delay:3.43s">i</tspan><tspan class="c" style="animation-delay:3.44s">v</tspan><tspan class="c" style="animation-delay:3.44s">i</tspan><tspan class="c" style="animation-delay:3.45s">t</tspan><tspan class="c" style="animation-delay:3.46s">y</tspan><tspan class="c" style="animation-delay:3.47s">.</tspan><tspan class="c" style="animation-delay:3.47s">l</tspan><tspan class="c" style="animation-delay:3.48s">o</tspan><tspan class="c" style="animation-delay:3.49s">g</tspan></text>
-<text class="c" x="16" y="2485" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.54s"><tspan fill="#e6edf3">last 7 days</tspan></text>
-<text class="c" x="16" y="2509" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.54s"><tspan>  </tspan><tspan fill="#e6edf3">2 contributions</tspan></text>
-<text class="c" x="16" y="2533" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.55s"><tspan fill="#e6edf3">last 30 days</tspan></text>
-<text class="c" x="16" y="2557" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.55s"><tspan>  </tspan><tspan fill="#e6edf3">2 contributions</tspan></text>
+<text class="c" x="16" y="2485" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.54s"><tspan fill="#e6edf3">merged, last 7d</tspan></text>
+<text class="c" x="16" y="2509" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.54s"><tspan>  </tspan><tspan fill="#e6edf3">63 pull requests</tspan></text>
+<text class="c" x="16" y="2533" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.55s"><tspan fill="#e6edf3">merged, last 30d</tspan></text>
+<text class="c" x="16" y="2557" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.55s"><tspan>  </tspan><tspan fill="#e6edf3">182 across 15 repositories</tspan></text>
 <text class="c" x="16" y="2581" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.56s"><tspan fill="#e6edf3">30-day trend</tspan></text>
-<text class="c" x="16" y="2605" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.57s"><tspan>  </tspan><tspan fill="#2a2b3a">▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁</tspan><tspan fill="#39d353">▆</tspan><tspan fill="#2a2b3a">▁</tspan></text>
-<text class="c" x="16" y="2629" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.57s"><tspan fill="#e6edf3">latest public push</tspan></text>
-<text class="c" x="16" y="2653" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.58s"><tspan>  </tspan><tspan fill="#8b8fa3">2026-07-23</tspan><tspan>  </tspan><tspan fill="#79c0ff">xtelos/xtelos</tspan></text>
-<text x="16" y="2701" xml:space="preserve" fill="#e6edf3"><tspan class="c" fill="#7ee787" style="animation-delay:3.63s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:3.63s">~ </tspan><tspan class="c" style="animation-delay:3.67s">c</tspan><tspan class="c" style="animation-delay:3.68s">a</tspan><tspan class="c" style="animation-delay:3.69s">t</tspan><tspan class="c" style="animation-delay:3.69s"> </tspan><tspan class="c" style="animation-delay:3.70s">s</tspan><tspan class="c" style="animation-delay:3.71s">t</tspan><tspan class="c" style="animation-delay:3.71s">a</tspan><tspan class="c" style="animation-delay:3.72s">c</tspan><tspan class="c" style="animation-delay:3.73s">k</tspan><tspan class="c" style="animation-delay:3.73s">.</tspan><tspan class="c" style="animation-delay:3.74s">t</tspan><tspan class="c" style="animation-delay:3.75s">x</tspan><tspan class="c" style="animation-delay:3.75s">t</tspan></text>
-<text class="c" x="16" y="2725" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.80s"><tspan fill="#79c0ff">languages</tspan></text>
-<text class="c" x="16" y="2749" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.81s"><tspan fill="#e6edf3">  JavaScript · TypeScript · Python · PHP ·</tspan></text>
-<text class="c" x="16" y="2773" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.81s"><tspan fill="#e6edf3">  SQL</tspan></text>
-<text class="c" x="16" y="2797" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.82s"><tspan fill="#79c0ff">frontend</tspan></text>
-<text class="c" x="16" y="2821" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.82s"><tspan fill="#e6edf3">  React · Next.js · single-page apps that</tspan></text>
-<text class="c" x="16" y="2845" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.83s"><tspan fill="#e6edf3">  stay fast</tspan></text>
-<text class="c" x="16" y="2869" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.83s"><tspan fill="#79c0ff">backend</tspan></text>
-<text class="c" x="16" y="2893" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.84s"><tspan fill="#e6edf3">  Node.js · Flask · Express · REST and JSON-</tspan></text>
-<text class="c" x="16" y="2917" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.84s"><tspan fill="#e6edf3">  RPC APIs</tspan></text>
-<text class="c" x="16" y="2941" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.85s"><tspan fill="#79c0ff">data</tspan></text>
-<text class="c" x="16" y="2965" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.85s"><tspan fill="#e6edf3">  PostgreSQL · MySQL · MongoDB · Redis</tspan></text>
-<text class="c" x="16" y="2989" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.86s"><tspan fill="#79c0ff">infra</tspan></text>
-<text class="c" x="16" y="3013" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.86s"><tspan fill="#e6edf3">  AWS · Docker · CI/CD · Linux</tspan></text>
-<text class="c" x="16" y="3037" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.87s"><tspan fill="#79c0ff">ai</tspan></text>
-<text class="c" x="16" y="3061" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.87s"><tspan fill="#e6edf3">  LLM integration · image generation · speech</tspan></text>
-<text class="c" x="16" y="3085" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.88s"><tspan fill="#e6edf3">  to text</tspan></text>
-<text x="16" y="3133" xml:space="preserve"><tspan class="c" fill="#7ee787" style="animation-delay:4.09s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:4.09s">~ </tspan><tspan class="cursor" fill="#e6edf3" style="animation-delay:4.09s">▋</tspan></text>
+<text class="c" x="16" y="2605" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.57s"><tspan>  </tspan><tspan fill="#39d353">▂▃▂</tspan><tspan fill="#2a2b3a">▁▁</tspan><tspan fill="#39d353">▂▃▂▂</tspan><tspan fill="#2a2b3a">▁▁▁▁</tspan><tspan fill="#39d353">▄▄▃▄</tspan><tspan fill="#2a2b3a">▁</tspan><tspan fill="#39d353">▂▄█▄▄▇▄</tspan><tspan fill="#2a2b3a">▁▁</tspan><tspan fill="#39d353">▃▇▃</tspan></text>
+<text class="c" x="16" y="2629" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.57s"><tspan fill="#e6edf3">active days</tspan></text>
+<text class="c" x="16" y="2653" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.58s"><tspan>  </tspan><tspan fill="#e6edf3">21 of the last 30</tspan></text>
+<text class="c" x="16" y="2677" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.58s"><tspan fill="#e6edf3">latest public push</tspan></text>
+<text class="c" x="16" y="2701" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.59s"><tspan>  </tspan><tspan fill="#8b8fa3">2026-07-23</tspan><tspan>  </tspan><tspan fill="#79c0ff">xtelos/xtelos</tspan></text>
+<text x="16" y="2749" xml:space="preserve" fill="#e6edf3"><tspan class="c" fill="#7ee787" style="animation-delay:3.64s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:3.64s">~ </tspan><tspan class="c" style="animation-delay:3.68s">c</tspan><tspan class="c" style="animation-delay:3.69s">a</tspan><tspan class="c" style="animation-delay:3.70s">t</tspan><tspan class="c" style="animation-delay:3.70s"> </tspan><tspan class="c" style="animation-delay:3.71s">s</tspan><tspan class="c" style="animation-delay:3.72s">t</tspan><tspan class="c" style="animation-delay:3.72s">a</tspan><tspan class="c" style="animation-delay:3.73s">c</tspan><tspan class="c" style="animation-delay:3.74s">k</tspan><tspan class="c" style="animation-delay:3.74s">.</tspan><tspan class="c" style="animation-delay:3.75s">t</tspan><tspan class="c" style="animation-delay:3.76s">x</tspan><tspan class="c" style="animation-delay:3.76s">t</tspan></text>
+<text class="c" x="16" y="2773" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.81s"><tspan fill="#79c0ff">languages</tspan></text>
+<text class="c" x="16" y="2797" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.82s"><tspan fill="#e6edf3">  JavaScript · TypeScript · Python · PHP ·</tspan></text>
+<text class="c" x="16" y="2821" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.82s"><tspan fill="#e6edf3">  SQL</tspan></text>
+<text class="c" x="16" y="2845" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.83s"><tspan fill="#79c0ff">frontend</tspan></text>
+<text class="c" x="16" y="2869" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.83s"><tspan fill="#e6edf3">  React · Next.js · single-page apps that</tspan></text>
+<text class="c" x="16" y="2893" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.84s"><tspan fill="#e6edf3">  stay fast</tspan></text>
+<text class="c" x="16" y="2917" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.84s"><tspan fill="#79c0ff">backend</tspan></text>
+<text class="c" x="16" y="2941" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.85s"><tspan fill="#e6edf3">  Node.js · Flask · Express · REST and JSON-</tspan></text>
+<text class="c" x="16" y="2965" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.85s"><tspan fill="#e6edf3">  RPC APIs</tspan></text>
+<text class="c" x="16" y="2989" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.86s"><tspan fill="#79c0ff">data</tspan></text>
+<text class="c" x="16" y="3013" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.86s"><tspan fill="#e6edf3">  PostgreSQL · MySQL · MongoDB · Redis</tspan></text>
+<text class="c" x="16" y="3037" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.87s"><tspan fill="#79c0ff">infra</tspan></text>
+<text class="c" x="16" y="3061" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.87s"><tspan fill="#e6edf3">  AWS · Docker · CI/CD · Linux</tspan></text>
+<text class="c" x="16" y="3085" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.88s"><tspan fill="#79c0ff">ai</tspan></text>
+<text class="c" x="16" y="3109" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.89s"><tspan fill="#e6edf3">  LLM integration · image generation · speech</tspan></text>
+<text class="c" x="16" y="3133" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.89s"><tspan fill="#e6edf3">  to text</tspan></text>
+<text x="16" y="3181" xml:space="preserve"><tspan class="c" fill="#7ee787" style="animation-delay:4.10s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:4.10s">~ </tspan><tspan class="cursor" fill="#e6edf3" style="animation-delay:4.10s">▋</tspan></text>
 </svg>
