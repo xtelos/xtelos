@@ -14,6 +14,7 @@ activity numbers. Output is committed.
 """
 
 import pathlib
+import re
 import sys
 import textwrap
 
@@ -35,6 +36,13 @@ AFTER_BLOCK = 0.18 # pause before the next prompt
 DECAY = 0.78       # rate multiplier applied after each block
 MIN_RATE = 0.28    # floor, so the last blocks still animate rather than snap
 LEADER = 21        # column where dotted-leader values start
+
+# Hard ceiling on the whole reveal, enforced by rescaling the finished
+# timeline. The shape above is tuned by feel and drifts with the content; this
+# is the number that actually matters. An empty terminal is not a loading
+# state a reader forgives when the window is ~1900px tall, and at four seconds
+# it read as a broken image rather than as typing.
+TOTAL_DURATION = 1.6
 
 TOOLS = [
     ("argus", "call/impact graph for a million-line legacy codebase, with cited "
@@ -102,6 +110,25 @@ TOOLS_OUTRO = "Source private while they grow up; ask me about any of them."
 def span(text, fill=None):
     f = f' fill="{fill}"' if fill else ""
     return f"<tspan{f}>{esc(text)}</tspan>"
+
+
+DELAY_RE = re.compile(r"animation-delay:([0-9.]+)s")
+
+
+def fit_duration(body, target):
+    """Squeeze the finished timeline so the last line lands by `target`.
+
+    Cheaper and more reliable than hand-tuning the per-block rates every time
+    the copy changes: the narrow layout has twice the lines of the wide one
+    and would otherwise run twice as long.
+    """
+    delays = [float(d) for d in DELAY_RE.findall(body)]
+    if not delays or max(delays) <= target:
+        return body
+    factor = target / max(delays)
+    return DELAY_RE.sub(
+        lambda m: f"animation-delay:{float(m.group(1)) * factor:.3f}s", body
+    )
 
 
 def spark_spans(spark, colors):
@@ -327,7 +354,8 @@ def build(layout, theme_name, stats):
     s.end_block()
 
     s.cursor()
-    return window(layout, theme_name, s.height, layout.title, "\n".join(s.rows), STYLE)
+    return window(layout, theme_name, s.height, layout.title,
+                  fit_duration("\n".join(s.rows), TOTAL_DURATION), STYLE)
 
 
 def main():
