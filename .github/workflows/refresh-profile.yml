@@ -1,4 +1,4 @@
-name: Refresh activity panel
+name: Refresh profile
 
 on:
   schedule:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: refresh-activity
+  group: refresh-profile
   cancel-in-progress: false
 
 jobs:
@@ -18,19 +18,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate activity SVGs
+      - name: Generate profile SVGs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/generate_activity.py
+        run: python3 scripts/generate_profile.py
 
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/activity-dark.svg assets/activity-light.svg
+          git add assets/profile-dark.svg assets/profile-light.svg \
+                  assets/profile-narrow-dark.svg assets/profile-narrow-light.svg
           if git diff --cached --quiet; then
             echo "No changes."
             exit 0
           fi
-          git commit -m "Refresh activity panel"
+          git commit -m "Refresh profile"
           git push
