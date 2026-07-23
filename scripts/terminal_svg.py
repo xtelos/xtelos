@@ -79,10 +79,15 @@ class Layout:
 
 # Column budgets are deliberately a few short of what fits, so a font with a
 # wider advance than DejaVu still lands inside the window.
+# Drawn wide on purpose. The panel keeps a fixed aspect ratio, so the only way
+# to cut how far a reader scrolls is to spend width on longer lines: 82 columns
+# gave a 2.29 aspect, 120 gives 1.36, which is nearly half the scrolling at any
+# render size. It also stops the terminal sitting in a puddle of whitespace in
+# GitHub's README column.
 WIDE = Layout(
-    name="", width=830, font=15, line_h=27, pad_x=22, titlebar=36,
-    dot_r=6, dot_x=22, dot_gap=20, title="dylan@xtelos: ~ · zsh",
-    cols=82, label_w=12, inline_labels=True,
+    name="", width=1200, font=15, line_h=27, pad_x=24, titlebar=36,
+    dot_r=6, dot_x=24, dot_gap=20, title="dylan@xtelos: ~ · zsh",
+    cols=120, label_w=12, inline_labels=True,
 )
 
 NARROW = Layout(

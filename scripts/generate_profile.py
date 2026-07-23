@@ -1,48 +1,30 @@
-"""Generate the whole profile as one animated terminal session.
+"""Generate the whole profile as one terminal session.
 
 Writes four files: {dark,light} x {desktop,narrow}. The README is a single
 <picture> that picks the right one, so the profile page is the terminal rather
 than a banner sitting on top of markdown.
 
-The typing effect is per-character opacity with staggered delays: the one
-animation primitive that renders identically everywhere GitHub's camo proxy
-serves the image. Commands type; output lines land whole, because typing 60
-lines of output would run for minutes.
+Nothing here depends on animation to become visible, and that is deliberate.
+An earlier version typed the session out with staggered per-character opacity
+delays. It rendered correctly in a page, and unreliably once GitHub served it
+through <img>: characters and whole lines stayed hidden permanently, in an
+order the delays cannot produce (a prompt at 0.087s missing while its own
+command text at 0.148s showed). A browser that never runs the animation, or
+runs part of it, must still show the whole profile, so the only animation left
+is the cursor blink, and the cursor is visible with it disabled.
 
 Run manually after editing copy; the nightly workflow reruns it for the
 activity numbers. Output is committed.
 """
 
 import pathlib
-import re
 import sys
 import textwrap
 
 import github_stats
 from terminal_svg import LAYOUTS, THEMES, esc, window
 
-# The session starts on page load, not on scroll, so anything still pending
-# when a visitor reaches it reads as a blank gap rather than as typing. That
-# matters more here than it did for a banner: this window is ~1900px tall, and
-# an empty one is a very large hole. So the clock accelerates: the first block
-# types at a human pace to establish that it is a live terminal, and each
-# block after it runs faster, like a session catching up to itself. Whole
-# thing lands in about four seconds.
-TYPE = 0.024       # seconds per typed character
-PROMPT = 0.14      # prompt glyphs, before the command starts typing
-AFTER_CMD = 0.16   # pause between a command finishing and its output
-STAGGER = 0.018    # between consecutive output lines
-AFTER_BLOCK = 0.18 # pause before the next prompt
-DECAY = 0.78       # rate multiplier applied after each block
-MIN_RATE = 0.28    # floor, so the last blocks still animate rather than snap
 LEADER = 21        # column where dotted-leader values start
-
-# Hard ceiling on the whole reveal, enforced by rescaling the finished
-# timeline. The shape above is tuned by feel and drifts with the content; this
-# is the number that actually matters. An empty terminal is not a loading
-# state a reader forgives when the window is ~1900px tall, and at four seconds
-# it read as a broken image rather than as typing.
-TOTAL_DURATION = 1.6
 
 TOOLS = [
     ("argus", "call/impact graph for a million-line legacy codebase, with cited "
@@ -112,25 +94,6 @@ def span(text, fill=None):
     return f"<tspan{f}>{esc(text)}</tspan>"
 
 
-DELAY_RE = re.compile(r"animation-delay:([0-9.]+)s")
-
-
-def fit_duration(body, target):
-    """Squeeze the finished timeline so the last line lands by `target`.
-
-    Cheaper and more reliable than hand-tuning the per-block rates every time
-    the copy changes: the narrow layout has twice the lines of the wide one
-    and would otherwise run twice as long.
-    """
-    delays = [float(d) for d in DELAY_RE.findall(body)]
-    if not delays or max(delays) <= target:
-        return body
-    factor = target / max(delays)
-    return DELAY_RE.sub(
-        lambda m: f"animation-delay:{float(m.group(1)) * factor:.3f}s", body
-    )
-
-
 def spark_spans(spark, colors):
     """Colour the sparkline's empty days apart from its active ones, in runs."""
     out, run, empty = [], "", spark[:1] == github_stats.BASELINE
@@ -145,15 +108,13 @@ def spark_spans(spark, colors):
 
 
 class Session:
-    """Lays terminal lines down the window, tracking the animation clock."""
+    """Lays terminal lines down the window."""
 
     def __init__(self, layout, colors):
         self.L = layout
         self.c = colors
         self.rows = []
         self.n = 0
-        self.t = 0.2
-        self.rate = 1.0
 
     @property
     def y(self):
@@ -163,41 +124,30 @@ class Session:
         self.n += 1
 
     def out(self, spans):
-        """An output line, revealed whole once its command has finished.
+        """One output line.
 
         The line carries a fill of its own: an unfilled tspan (a separator, a
         space) would otherwise inherit SVG's default black and disappear
         against the dark theme.
         """
         self.rows.append(
-            f'<text class="c" x="{self.L.pad_x}" y="{self.y}" xml:space="preserve" '
-            f'fill="{self.c["dim"]}" style="animation-delay:{self.t:.2f}s">{spans}</text>'
+            f'<text x="{self.L.pad_x}" y="{self.y}" xml:space="preserve" '
+            f'fill="{self.c["dim"]}">{spans}</text>'
         )
         self.n += 1
-        self.t += STAGGER * self.rate
 
     def command(self, cmd):
         c = self.c
-        parts = [
-            f'<tspan class="c" fill="{c["prompt"]}" style="animation-delay:{self.t:.2f}s">➜ </tspan>',
-            f'<tspan class="c" fill="{c["tilde"]}" style="animation-delay:{self.t:.2f}s">~ </tspan>',
-        ]
-        self.t += PROMPT * self.rate
-        for ch in cmd:
-            parts.append(
-                f'<tspan class="c" style="animation-delay:{self.t:.2f}s">{esc(ch)}</tspan>'
-            )
-            self.t += TYPE * self.rate
         self.rows.append(
             f'<text x="{self.L.pad_x}" y="{self.y}" xml:space="preserve" '
-            f'fill="{c["text"]}">{"".join(parts)}</text>'
+            f'fill="{c["text"]}">'
+            f'<tspan fill="{c["prompt"]}">➜ </tspan>'
+            f'<tspan fill="{c["tilde"]}">~ </tspan>'
+            f"<tspan>{esc(cmd)}</tspan></text>"
         )
         self.n += 1
-        self.t += AFTER_CMD * self.rate
 
     def end_block(self):
-        self.t += AFTER_BLOCK * self.rate
-        self.rate = max(MIN_RATE, self.rate * DECAY)
         self.blank()
 
     def prose(self, text, fill):
@@ -258,12 +208,11 @@ class Session:
 
     def cursor(self):
         c = self.c
-        self.t += 0.15
         self.rows.append(
             f'<text x="{self.L.pad_x}" y="{self.y}" xml:space="preserve">'
-            f'<tspan class="c" fill="{c["prompt"]}" style="animation-delay:{self.t:.2f}s">➜ </tspan>'
-            f'<tspan class="c" fill="{c["tilde"]}" style="animation-delay:{self.t:.2f}s">~ </tspan>'
-            f'<tspan class="cursor" fill="{c["text"]}" style="animation-delay:{self.t:.2f}s">▋</tspan>'
+            f'<tspan fill="{c["prompt"]}">➜ </tspan>'
+            f'<tspan fill="{c["tilde"]}">~ </tspan>'
+            f'<tspan class="cursor" fill="{c["text"]}">▋</tspan>'
             f"</text>"
         )
         self.n += 1
@@ -273,15 +222,12 @@ class Session:
         return self.L.first_y + (self.n - 1) * self.L.line_h + self.L.bottom_pad
 
 
+# The cursor is visible by default and the animation only blinks it off, so a
+# renderer that drops the animation leaves a solid cursor rather than none.
 STYLE = """
-.c { opacity: 0; animation: appear 0.01s steps(1, end) forwards; }
-@keyframes appear { to { opacity: 1; } }
-.cursor { opacity: 0; animation: blink 1.1s steps(1, end) infinite; }
+.cursor { animation: blink 1.1s steps(1, end) infinite; }
 @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
-@media (prefers-reduced-motion: reduce) {
-  .c { animation-delay: 0s !important; }
-  .cursor { animation: none; opacity: 1; }
-}
+@media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
 """
 
 
@@ -355,7 +301,7 @@ def build(layout, theme_name, stats):
 
     s.cursor()
     return window(layout, theme_name, s.height, layout.title,
-                  fit_duration("\n".join(s.rows), TOTAL_DURATION), STYLE)
+                  "\n".join(s.rows), STYLE)
 
 
 def main():
