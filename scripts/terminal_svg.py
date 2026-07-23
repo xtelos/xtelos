@@ -1,12 +1,20 @@
-"""Shared terminal-window chrome for the profile's SVG panels.
+"""Shared terminal-window chrome for the profile SVG.
 
-Both generators (hero, activity) render into the same macOS-style terminal
-window so every panel on the profile reads as one system. Pure stdlib.
+The whole profile is one terminal session, rendered at two widths: a desktop
+layout and a phone layout that `<picture>` swaps in under 500px. Everything a
+layout needs to reflow (column budget, metrics, chrome scale) lives in Layout,
+so the content is written once and drawn twice. Pure stdlib.
 """
 
+from dataclasses import dataclass
 from html import escape
 
 FONT = "ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace"
+
+# Widest advance among the fonts in the stack (DejaVu/Menlo sit at ~0.602em;
+# Consolas is narrower). Column budgets are sized against the worst case so a
+# line never overruns the window on somebody else's machine.
+ADVANCE = 0.602
 
 THEMES = {
     "dark": {
@@ -22,6 +30,7 @@ THEMES = {
         "accent": "#79c0ff",
         "warm": "#ffa657",
         "green": "#39d353",
+        "rule": "#2a2b3a",
     },
     "light": {
         "window": "#ffffff",
@@ -36,28 +45,73 @@ THEMES = {
         "accent": "#0969da",
         "warm": "#953800",
         "green": "#1a7f37",
+        "rule": "#d8dee4",
     },
 }
 
-TITLEBAR_H = 36
 DOT_COLORS = ("#ff5f57", "#febc2e", "#28c840")
+
+
+@dataclass(frozen=True)
+class Layout:
+    name: str
+    width: int
+    font: int
+    line_h: int
+    pad_x: int
+    titlebar: int
+    dot_r: float
+    dot_x: float
+    dot_gap: float
+    title: str
+    cols: int          # usable character columns for body text
+    label_w: int       # column width of the label gutter (rows/log blocks)
+    inline_labels: bool  # False: label gets its own line, value indents below
+
+    @property
+    def first_y(self):
+        return self.titlebar + self.font + 16
+
+    @property
+    def bottom_pad(self):
+        return self.line_h
+
+
+# Column budgets are deliberately a few short of what fits, so a font with a
+# wider advance than DejaVu still lands inside the window.
+WIDE = Layout(
+    name="", width=830, font=15, line_h=27, pad_x=22, titlebar=36,
+    dot_r=6, dot_x=22, dot_gap=20, title="dylan@xtelos: ~ · zsh",
+    cols=82, label_w=12, inline_labels=True,
+)
+
+NARROW = Layout(
+    name="narrow-", width=460, font=15, line_h=24, pad_x=16, titlebar=30,
+    dot_r=5, dot_x=17, dot_gap=16, title="dylan@xtelos · zsh",
+    cols=45, label_w=0, inline_labels=False,
+)
+
+LAYOUTS = (WIDE, NARROW)
 
 
 def esc(s):
     return escape(s, quote=True)
 
 
-def window(theme_name, width, height, title, body, extra_style=""):
-    """Wrap `body` (svg fragment) in the terminal window chrome."""
+def window(layout, theme_name, height, title, body, extra_style=""):
+    """Wrap `body` (an svg fragment) in the terminal window chrome."""
     t = THEMES[theme_name]
+    w = layout.width
     dots = "".join(
-        f'<circle cx="{22 + i * 20}" cy="{TITLEBAR_H / 2}" r="6" fill="{c}"/>'
+        f'<circle cx="{layout.dot_x + i * layout.dot_gap}" cy="{layout.titlebar / 2}" '
+        f'r="{layout.dot_r}" fill="{c}"/>'
         for i, c in enumerate(DOT_COLORS)
     )
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" role="img">
+    title_size = round(layout.font * 0.87, 1)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {height}" width="{w}" height="{height}" role="img">
 <style>
-text {{ font-family: {FONT}; font-size: 15px; }}
-.title {{ font-size: 13px; fill: {t["title_text"]}; }}
+text {{ font-family: {FONT}; font-size: {layout.font}px; }}
+.title {{ font-size: {title_size}px; fill: {t["title_text"]}; }}
 {extra_style}
 </style>
 <defs>
@@ -65,15 +119,15 @@ text {{ font-family: {FONT}; font-size: 15px; }}
 <stop offset="0" stop-color="{t["glow_top"]}"/>
 <stop offset="1" stop-color="{t["window"]}"/>
 </linearGradient>
-<clipPath id="win"><rect x="1" y="1" width="{width - 2}" height="{height - 2}" rx="11"/></clipPath>
+<clipPath id="win"><rect x="1" y="1" width="{w - 2}" height="{height - 2}" rx="11"/></clipPath>
 </defs>
-<rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="11.5" fill="url(#bg)" stroke="{t["window_edge"]}"/>
+<rect x="0.5" y="0.5" width="{w - 1}" height="{height - 1}" rx="11.5" fill="url(#bg)" stroke="{t["window_edge"]}"/>
 <g clip-path="url(#win)">
-<rect x="1" y="1" width="{width - 2}" height="{TITLEBAR_H - 1}" fill="{t["titlebar"]}"/>
-<line x1="1" y1="{TITLEBAR_H}" x2="{width - 1}" y2="{TITLEBAR_H}" stroke="{t["window_edge"]}" stroke-width="1"/>
+<rect x="1" y="1" width="{w - 2}" height="{layout.titlebar - 1}" fill="{t["titlebar"]}"/>
+<line x1="1" y1="{layout.titlebar}" x2="{w - 1}" y2="{layout.titlebar}" stroke="{t["window_edge"]}" stroke-width="1"/>
 </g>
 {dots}
-<text class="title" x="{width / 2}" y="{TITLEBAR_H / 2 + 4.5}" text-anchor="middle">{esc(title)}</text>
+<text class="title" x="{w / 2}" y="{layout.titlebar / 2 + title_size * 0.35 + 0.5:.1f}" text-anchor="middle">{esc(title)}</text>
 {body}
 </svg>
 '''

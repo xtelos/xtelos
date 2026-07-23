@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 3205" width="460" height="3205" role="img">
+<style>
+text { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace; font-size: 15px; }
+.title { font-size: 13.1px; fill: #6b6d80; }
+
+.c { opacity: 0; animation: appear 0.01s steps(1, end) forwards; }
+@keyframes appear { to { opacity: 1; } }
+.cursor { opacity: 0; animation: blink 1.1s steps(1, end) infinite; }
+@keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .c { animation-delay: 0s !important; }
+  .cursor { animation: none; opacity: 1; }
+}
+
+</style>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#1b1d29"/>
+<stop offset="1" stop-color="#15161e"/>
+</linearGradient>
+<clipPath id="win"><rect x="1" y="1" width="458" height="3203" rx="11"/></clipPath>
+</defs>
+<rect x="0.5" y="0.5" width="459" height="3204" rx="11.5" fill="url(#bg)" stroke="#2a2b3a"/>
+<g clip-path="url(#win)">
+<rect x="1" y="1" width="458" height="29" fill="#1b1c26"/>
+<line x1="1" y1="30" x2="459" y2="30" stroke="#2a2b3a" stroke-width="1"/>
+</g>
+<circle cx="17" cy="15.0" r="5" fill="#ff5f57"/><circle cx="33" cy="15.0" r="5" fill="#febc2e"/><circle cx="49" cy="15.0" r="5" fill="#28c840"/>
+<text class="title" x="230.0" y="20.1" text-anchor="middle">dylan@xtelos · zsh</text>
+<text x="16" y="61" xml:space="preserve" fill="#e6edf3"><tspan class="c" fill="#7ee787" style="animation-delay:0.20s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:0.20s">~ </tspan><tspan class="c" style="animation-delay:0.34s">w</tspan><tspan class="c" style="animation-delay:0.36s">h</tspan><tspan class="c" style="animation-delay:0.39s">o</tspan><tspan class="c" style="animation-delay:0.41s">a</tspan><tspan class="c" style="animation-delay:0.44s">m</tspan><tspan class="c" style="animation-delay:0.46s">i</tspan></text>
+<text class="c" x="16" y="85" xml:space="preserve" fill="#8b8fa3" style="animation-delay:0.64s"><tspan fill="#e6edf3">Dylan Fodor</tspan><tspan> · </tspan><tspan fill="#e6edf3">Full-Stack Developer</tspan></text>
+<text class="c" x="16" y="109" xml:space="preserve" fill="#8b8fa3" style="animation-delay:0.66s"><tspan fill="#8b8fa3">Software Consulting Services</tspan></text>
+<text x="16" y="157" xml:space="preserve" fill="#e6edf3"><tspan class="c" fill="#7ee787" style="animation-delay:0.86s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:0.86s">~ </tspan><tspan class="c" style="animation-delay:0.97s">c</tspan><tspan class="c" style="animation-delay:0.99s">a</tspan><tspan class="c" style="animation-delay:1.01s">t</tspan><tspan class="c" style="animation-delay:1.03s"> </tspan><tspan class="c" style="animation-delay:1.04s">a</tspan><tspan class="c" style="animation-delay:1.06s">b</tspan><tspan class="c" style="animation-delay:1.08s">o</tspan><tspan class="c" style="animation-delay:1.10s">u</tspan><tspan class="c" style="animation-delay:1.12s">t</tspan><tspan class="c" style="animation-delay:1.14s">.</tspan><tspan class="c" style="animation-delay:1.16s">t</tspan><tspan class="c" style="animation-delay:1.18s">x</tspan><tspan class="c" style="animation-delay:1.19s">t</tspan></text>
+<text class="c" x="16" y="181" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.34s"><tspan fill="#e6edf3">I build and modernize the software newspapers</tspan></text>
+<text class="c" x="16" y="205" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.35s"><tspan fill="#e6edf3">use to sell and produce advertising. I lean</tspan></text>
+<text class="c" x="16" y="229" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.37s"><tspan fill="#e6edf3">front-end but work the whole stack, and the</tspan></text>
+<text class="c" x="16" y="253" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.38s"><tspan fill="#e6edf3">work I&#x27;m proudest of is the load-bearing</tspan></text>
+<text class="c" x="16" y="277" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.39s"><tspan fill="#e6edf3">kind: two-factor auth, payment processing,</tspan></text>
+<text class="c" x="16" y="301" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.41s"><tspan fill="#e6edf3">and a generative-AI tool that makes print-</tspan></text>
+<text class="c" x="16" y="325" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.42s"><tspan fill="#e6edf3">ready ad artwork. Reliability first, because</tspan></text>
+<text class="c" x="16" y="349" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.44s"><tspan fill="#e6edf3">that&#x27;s the part people only notice when it&#x27;s</tspan></text>
+<text class="c" x="16" y="373" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.45s"><tspan fill="#e6edf3">missing.</tspan></text>
+<text class="c" x="16" y="421" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.46s"><tspan fill="#8b8fa3">Commitment issues? Not me. I commit early,</tspan></text>
+<text class="c" x="16" y="445" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.48s"><tspan fill="#8b8fa3">commit often, and only occasionally force-</tspan></text>
+<text class="c" x="16" y="469" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.49s"><tspan fill="#8b8fa3">push something I&#x27;ll regret.</tspan></text>
+<text x="16" y="517" xml:space="preserve" fill="#e6edf3"><tspan class="c" fill="#7ee787" style="animation-delay:1.65s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:1.65s">~ </tspan><tspan class="c" style="animation-delay:1.73s">l</tspan><tspan class="c" style="animation-delay:1.75s">s</tspan><tspan class="c" style="animation-delay:1.76s"> </tspan><tspan class="c" style="animation-delay:1.78s">~</tspan><tspan class="c" style="animation-delay:1.79s">/</tspan><tspan class="c" style="animation-delay:1.80s">t</tspan><tspan class="c" style="animation-delay:1.82s">o</tspan><tspan class="c" style="animation-delay:1.83s">o</tspan><tspan class="c" style="animation-delay:1.85s">l</tspan><tspan class="c" style="animation-delay:1.86s">s</tspan></text>
+<text class="c" x="16" y="541" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.97s"><tspan fill="#79c0ff">argus/</tspan><tspan>  </tspan><tspan fill="#79c0ff">aegis/</tspan><tspan>  </tspan><tspan fill="#79c0ff">iris/</tspan><tspan>  </tspan><tspan fill="#79c0ff">demeter/</tspan><tspan>  </tspan><tspan fill="#79c0ff">ariadne/</tspan></text>
+<text class="c" x="16" y="565" xml:space="preserve" fill="#8b8fa3" style="animation-delay:1.99s"><tspan fill="#79c0ff">delphi/</tspan><tspan>  </tspan><tspan fill="#79c0ff">momus/</tspan></text>
+<text x="16" y="613" xml:space="preserve" fill="#e6edf3"><tspan class="c" fill="#7ee787" style="animation-delay:2.11s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:2.11s">~ </tspan><tspan class="c" style="animation-delay:2.17s">c</tspan><tspan class="c" style="animation-delay:2.18s">a</tspan><tspan class="c" style="animation-delay:2.20s">t</tspan><tspan class="c" style="animation-delay:2.21s"> </tspan><tspan class="c" style="animation-delay:2.22s">~</tspan><tspan class="c" style="animation-delay:2.23s">/</tspan><tspan class="c" style="animation-delay:2.24s">t</tspan><tspan class="c" style="animation-delay:2.25s">o</tspan><tspan class="c" style="animation-delay:2.26s">o</tspan><tspan class="c" style="animation-delay:2.28s">l</tspan><tspan class="c" style="animation-delay:2.29s">s</tspan><tspan class="c" style="animation-delay:2.30s">/</tspan><tspan class="c" style="animation-delay:2.31s">R</tspan><tspan class="c" style="animation-delay:2.32s">E</tspan><tspan class="c" style="animation-delay:2.33s">A</tspan><tspan class="c" style="animation-delay:2.34s">D</tspan><tspan class="c" style="animation-delay:2.35s">M</tspan><tspan class="c" style="animation-delay:2.37s">E</tspan></text>
+<text class="c" x="16" y="637" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.45s"><tspan fill="#8b8fa3">I run AI coding agents against real</tspan></text>
+<text class="c" x="16" y="661" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.46s"><tspan fill="#8b8fa3">production code, and I got tired of &quot;trust</tspan></text>
+<text class="c" x="16" y="685" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.47s"><tspan fill="#8b8fa3">me, it works.&quot; Each of these turns a category</tspan></text>
+<text class="c" x="16" y="709" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.48s"><tspan fill="#8b8fa3">of guesswork into a measured verdict.</tspan></text>
+<text class="c" x="16" y="757" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.49s"><tspan fill="#79c0ff">argus</tspan></text>
+<text class="c" x="16" y="781" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.50s"><tspan fill="#e6edf3">  call/impact graph for a million-line legacy</tspan></text>
+<text class="c" x="16" y="805" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.50s"><tspan fill="#e6edf3">  codebase, with cited file:line receipts</tspan></text>
+<text class="c" x="16" y="829" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.51s"><tspan fill="#e6edf3">  instead of a grep sweep</tspan></text>
+<text class="c" x="16" y="877" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.52s"><tspan fill="#79c0ff">aegis</tspan></text>
+<text class="c" x="16" y="901" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.53s"><tspan fill="#e6edf3">  build-trust engine that compiles on the</tspan></text>
+<text class="c" x="16" y="925" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.54s"><tspan fill="#e6edf3">  real host; unparsed and unverified are</tspan></text>
+<text class="c" x="16" y="949" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.55s"><tspan fill="#e6edf3">  never a pass, so it cannot report a false</tspan></text>
+<text class="c" x="16" y="973" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.56s"><tspan fill="#e6edf3">  green</tspan></text>
+<text class="c" x="16" y="1021" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.56s"><tspan fill="#79c0ff">iris</tspan></text>
+<text class="c" x="16" y="1045" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.57s"><tspan fill="#e6edf3">  headless visual verification over the</tspan></text>
+<text class="c" x="16" y="1069" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.58s"><tspan fill="#e6edf3">  Chrome DevTools Protocol: screenshots with</tspan></text>
+<text class="c" x="16" y="1093" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.59s"><tspan fill="#e6edf3">  a verdict, console errors caught at the</tspan></text>
+<text class="c" x="16" y="1117" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.60s"><tspan fill="#e6edf3">  protocol level</tspan></text>
+<text class="c" x="16" y="1165" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.61s"><tspan fill="#79c0ff">demeter</tspan></text>
+<text class="c" x="16" y="1189" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.62s"><tspan fill="#e6edf3">  dev-database harness that stands up, seeds,</tspan></text>
+<text class="c" x="16" y="1213" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.62s"><tspan fill="#e6edf3">  and tears down per stack, and never wipes</tspan></text>
+<text class="c" x="16" y="1237" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.63s"><tspan fill="#e6edf3">  the thing you cannot rebuild</tspan></text>
+<text class="c" x="16" y="1285" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.64s"><tspan fill="#79c0ff">ariadne</tspan></text>
+<text class="c" x="16" y="1309" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.65s"><tspan fill="#e6edf3">  long-effort tracker reporting the drift</tspan></text>
+<text class="c" x="16" y="1333" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.66s"><tspan fill="#e6edf3">  between what the tracker claims and what</tspan></text>
+<text class="c" x="16" y="1357" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.67s"><tspan fill="#e6edf3">  git says actually happened</tspan></text>
+<text class="c" x="16" y="1405" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.68s"><tspan fill="#79c0ff">delphi</tspan></text>
+<text class="c" x="16" y="1429" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.68s"><tspan fill="#e6edf3">  personal knowledge engine: a linked note</tspan></text>
+<text class="c" x="16" y="1453" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.69s"><tspan fill="#e6edf3">  graph with scored recall, so hard-won</tspan></text>
+<text class="c" x="16" y="1477" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.70s"><tspan fill="#e6edf3">  context survives from one session to the</tspan></text>
+<text class="c" x="16" y="1501" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.71s"><tspan fill="#e6edf3">  next</tspan></text>
+<text class="c" x="16" y="1549" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.72s"><tspan fill="#79c0ff">momus</tspan></text>
+<text class="c" x="16" y="1573" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.73s"><tspan fill="#e6edf3">  adversarial reviewer that assumes my change</tspan></text>
+<text class="c" x="16" y="1597" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.74s"><tspan fill="#e6edf3">  is broken and tries to prove it before</tspan></text>
+<text class="c" x="16" y="1621" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.74s"><tspan fill="#e6edf3">  anything gets called done</tspan></text>
+<text class="c" x="16" y="1669" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.75s"><tspan fill="#8b8fa3">Source private while they grow up; ask me</tspan></text>
+<text class="c" x="16" y="1693" xml:space="preserve" fill="#8b8fa3" style="animation-delay:2.76s"><tspan fill="#8b8fa3">about any of them.</tspan></text>
+<text x="16" y="1741" xml:space="preserve" fill="#e6edf3"><tspan class="c" fill="#7ee787" style="animation-delay:2.86s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:2.86s">~ </tspan><tspan class="c" style="animation-delay:2.91s">t</tspan><tspan class="c" style="animation-delay:2.92s">a</tspan><tspan class="c" style="animation-delay:2.92s">i</tspan><tspan class="c" style="animation-delay:2.93s">l</tspan><tspan class="c" style="animation-delay:2.94s"> </tspan><tspan class="c" style="animation-delay:2.95s">s</tspan><tspan class="c" style="animation-delay:2.96s">h</tspan><tspan class="c" style="animation-delay:2.97s">i</tspan><tspan class="c" style="animation-delay:2.98s">p</tspan><tspan class="c" style="animation-delay:2.99s">p</tspan><tspan class="c" style="animation-delay:3.00s">e</tspan><tspan class="c" style="animation-delay:3.00s">d</tspan><tspan class="c" style="animation-delay:3.01s">.</tspan><tspan class="c" style="animation-delay:3.02s">l</tspan><tspan class="c" style="animation-delay:3.03s">o</tspan><tspan class="c" style="animation-delay:3.04s">g</tspan></text>
+<text class="c" x="16" y="1765" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.11s"><tspan fill="#ffa657">[auth]</tspan></text>
+<text class="c" x="16" y="1789" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.11s"><tspan fill="#e6edf3">  Multi-method 2FA end to end: authenticator-</tspan></text>
+<text class="c" x="16" y="1813" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.12s"><tspan fill="#e6edf3">  app TOTP, SMS, email, and 30-day trusted</tspan></text>
+<text class="c" x="16" y="1837" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.13s"><tspan fill="#e6edf3">  devices. Live across 90+ newspaper sites.</tspan></text>
+<text class="c" x="16" y="1885" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.13s"><tspan fill="#ffa657">[payments]</tspan></text>
+<text class="c" x="16" y="1909" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.14s"><tspan fill="#e6edf3">  Provider-agnostic payment layer (Stripe,</tspan></text>
+<text class="c" x="16" y="1933" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.15s"><tspan fill="#e6edf3">  Square). Led a processor migration with</tspan></text>
+<text class="c" x="16" y="1957" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.15s"><tspan fill="#e6edf3">  per-customer routing and a safe, re-</tspan></text>
+<text class="c" x="16" y="1981" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.16s"><tspan fill="#e6edf3">  runnable job moving stored cards into a</tspan></text>
+<text class="c" x="16" y="2005" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.17s"><tspan fill="#e6edf3">  token vault.</tspan></text>
+<text class="c" x="16" y="2053" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.17s"><tspan fill="#ffa657">[genai]</tspan></text>
+<text class="c" x="16" y="2077" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.18s"><tspan fill="#e6edf3">  Print-ready ad artwork from a text prompt:</tspan></text>
+<text class="c" x="16" y="2101" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.19s"><tspan fill="#e6edf3">  three interchangeable image models behind</tspan></text>
+<text class="c" x="16" y="2125" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.19s"><tspan fill="#e6edf3">  one interface, OCR text handling, and an</tspan></text>
+<text class="c" x="16" y="2149" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.20s"><tspan fill="#e6edf3">  automated check that rejects unusable</tspan></text>
+<text class="c" x="16" y="2173" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.21s"><tspan fill="#e6edf3">  output before it ships.</tspan></text>
+<text class="c" x="16" y="2221" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.21s"><tspan fill="#ffa657">[adtech]</tspan></text>
+<text class="c" x="16" y="2245" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.22s"><tspan fill="#e6edf3">  Google Ad Manager integration: line items,</tspan></text>
+<text class="c" x="16" y="2269" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.23s"><tspan fill="#e6edf3">  advertisers, and creatives created straight</tspan></text>
+<text class="c" x="16" y="2293" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.23s"><tspan fill="#e6edf3">  from order entry.</tspan></text>
+<text class="c" x="16" y="2341" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.24s"><tspan fill="#ffa657">[solo]</tspan></text>
+<text class="c" x="16" y="2365" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.25s"><tspan fill="#e6edf3">  Multi-tenant classified-ads marketplace,</tspan></text>
+<text class="c" x="16" y="2389" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.25s"><tspan fill="#e6edf3">  sole developer: ad builder, checkout</tspan></text>
+<text class="c" x="16" y="2413" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.26s"><tspan fill="#e6edf3">  funnel, payments, approvals, email.</tspan></text>
+<text x="16" y="2461" xml:space="preserve" fill="#e6edf3"><tspan class="c" fill="#7ee787" style="animation-delay:3.33s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:3.33s">~ </tspan><tspan class="c" style="animation-delay:3.38s">t</tspan><tspan class="c" style="animation-delay:3.38s">a</tspan><tspan class="c" style="animation-delay:3.39s">i</tspan><tspan class="c" style="animation-delay:3.40s">l</tspan><tspan class="c" style="animation-delay:3.40s"> </tspan><tspan class="c" style="animation-delay:3.41s">a</tspan><tspan class="c" style="animation-delay:3.42s">c</tspan><tspan class="c" style="animation-delay:3.42s">t</tspan><tspan class="c" style="animation-delay:3.43s">i</tspan><tspan class="c" style="animation-delay:3.44s">v</tspan><tspan class="c" style="animation-delay:3.44s">i</tspan><tspan class="c" style="animation-delay:3.45s">t</tspan><tspan class="c" style="animation-delay:3.46s">y</tspan><tspan class="c" style="animation-delay:3.47s">.</tspan><tspan class="c" style="animation-delay:3.47s">l</tspan><tspan class="c" style="animation-delay:3.48s">o</tspan><tspan class="c" style="animation-delay:3.49s">g</tspan></text>
+<text class="c" x="16" y="2485" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.54s"><tspan fill="#e6edf3">merged, last 7d</tspan></text>
+<text class="c" x="16" y="2509" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.54s"><tspan>  </tspan><tspan fill="#e6edf3">63 pull requests</tspan></text>
+<text class="c" x="16" y="2533" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.55s"><tspan fill="#e6edf3">merged, last 30d</tspan></text>
+<text class="c" x="16" y="2557" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.55s"><tspan>  </tspan><tspan fill="#e6edf3">182 across 15 repositories</tspan></text>
+<text class="c" x="16" y="2581" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.56s"><tspan fill="#e6edf3">30-day trend</tspan></text>
+<text class="c" x="16" y="2605" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.57s"><tspan>  </tspan><tspan fill="#39d353">▂▃▂</tspan><tspan fill="#2a2b3a">▁▁</tspan><tspan fill="#39d353">▂▃▂▂</tspan><tspan fill="#2a2b3a">▁▁▁▁</tspan><tspan fill="#39d353">▄▄▃▄</tspan><tspan fill="#2a2b3a">▁</tspan><tspan fill="#39d353">▂▄█▄▄▇▄</tspan><tspan fill="#2a2b3a">▁▁</tspan><tspan fill="#39d353">▃▇▃</tspan></text>
+<text class="c" x="16" y="2629" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.57s"><tspan fill="#e6edf3">active days</tspan></text>
+<text class="c" x="16" y="2653" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.58s"><tspan>  </tspan><tspan fill="#e6edf3">21 of the last 30</tspan></text>
+<text class="c" x="16" y="2677" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.58s"><tspan fill="#e6edf3">latest public push</tspan></text>
+<text class="c" x="16" y="2701" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.59s"><tspan>  </tspan><tspan fill="#8b8fa3">2026-07-23</tspan><tspan>  </tspan><tspan fill="#79c0ff">xtelos/xtelos</tspan></text>
+<text x="16" y="2749" xml:space="preserve" fill="#e6edf3"><tspan class="c" fill="#7ee787" style="animation-delay:3.64s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:3.64s">~ </tspan><tspan class="c" style="animation-delay:3.68s">c</tspan><tspan class="c" style="animation-delay:3.69s">a</tspan><tspan class="c" style="animation-delay:3.70s">t</tspan><tspan class="c" style="animation-delay:3.70s"> </tspan><tspan class="c" style="animation-delay:3.71s">s</tspan><tspan class="c" style="animation-delay:3.72s">t</tspan><tspan class="c" style="animation-delay:3.72s">a</tspan><tspan class="c" style="animation-delay:3.73s">c</tspan><tspan class="c" style="animation-delay:3.74s">k</tspan><tspan class="c" style="animation-delay:3.74s">.</tspan><tspan class="c" style="animation-delay:3.75s">t</tspan><tspan class="c" style="animation-delay:3.76s">x</tspan><tspan class="c" style="animation-delay:3.76s">t</tspan></text>
+<text class="c" x="16" y="2773" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.81s"><tspan fill="#79c0ff">languages</tspan></text>
+<text class="c" x="16" y="2797" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.82s"><tspan fill="#e6edf3">  JavaScript · TypeScript · Python · PHP ·</tspan></text>
+<text class="c" x="16" y="2821" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.82s"><tspan fill="#e6edf3">  SQL</tspan></text>
+<text class="c" x="16" y="2845" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.83s"><tspan fill="#79c0ff">frontend</tspan></text>
+<text class="c" x="16" y="2869" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.83s"><tspan fill="#e6edf3">  React · Next.js · single-page apps that</tspan></text>
+<text class="c" x="16" y="2893" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.84s"><tspan fill="#e6edf3">  stay fast</tspan></text>
+<text class="c" x="16" y="2917" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.84s"><tspan fill="#79c0ff">backend</tspan></text>
+<text class="c" x="16" y="2941" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.85s"><tspan fill="#e6edf3">  Node.js · Flask · Express · REST and JSON-</tspan></text>
+<text class="c" x="16" y="2965" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.85s"><tspan fill="#e6edf3">  RPC APIs</tspan></text>
+<text class="c" x="16" y="2989" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.86s"><tspan fill="#79c0ff">data</tspan></text>
+<text class="c" x="16" y="3013" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.86s"><tspan fill="#e6edf3">  PostgreSQL · MySQL · MongoDB · Redis</tspan></text>
+<text class="c" x="16" y="3037" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.87s"><tspan fill="#79c0ff">infra</tspan></text>
+<text class="c" x="16" y="3061" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.87s"><tspan fill="#e6edf3">  AWS · Docker · CI/CD · Linux</tspan></text>
+<text class="c" x="16" y="3085" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.88s"><tspan fill="#79c0ff">ai</tspan></text>
+<text class="c" x="16" y="3109" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.89s"><tspan fill="#e6edf3">  LLM integration · image generation · speech</tspan></text>
+<text class="c" x="16" y="3133" xml:space="preserve" fill="#8b8fa3" style="animation-delay:3.89s"><tspan fill="#e6edf3">  to text</tspan></text>
+<text x="16" y="3181" xml:space="preserve"><tspan class="c" fill="#7ee787" style="animation-delay:4.10s">➜ </tspan><tspan class="c" fill="#79c0ff" style="animation-delay:4.10s">~ </tspan><tspan class="cursor" fill="#e6edf3" style="animation-delay:4.10s">▋</tspan></text>
+</svg>

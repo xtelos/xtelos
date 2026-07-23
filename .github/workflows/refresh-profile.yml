@@ -1,0 +1,44 @@
+name: Refresh profile
+
+on:
+  schedule:
+    - cron: "17 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-profile
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # PROFILE_TOKEN is a PAT with repo scope. The default GITHUB_TOKEN is
+      # scoped to this repository and cannot see the private repos where the
+      # work actually happens, so with it the activity block would report 1
+      # merged PR instead of 182. The generator refuses to publish in that
+      # case, which is why this step is allowed to fail loudly: a red workflow
+      # and the last good SVGs beat a profile that quietly claims nothing
+      # shipped.
+      - name: Generate profile SVGs
+        env:
+          PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
+        run: python3 scripts/generate_profile.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/profile-dark.svg assets/profile-light.svg \
+                  assets/profile-narrow-dark.svg assets/profile-narrow-light.svg
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "Refresh profile"
+          git push
