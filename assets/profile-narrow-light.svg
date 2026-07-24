@@ -106,11 +106,11 @@ text { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono'
 <text x="16" y="2413" xml:space="preserve" fill="#6e7781"><tspan fill="#1f2328">  funnel, payments, approvals, email.</tspan></text>
 <text x="16" y="2461" xml:space="preserve" fill="#1f2328"><tspan fill="#1a7f37">➜ </tspan><tspan fill="#0969da">~ </tspan><tspan>tail activity.log</tspan></text>
 <text x="16" y="2485" xml:space="preserve" fill="#6e7781"><tspan fill="#1f2328">merged, last 7d</tspan></text>
-<text x="16" y="2509" xml:space="preserve" fill="#6e7781"><tspan>  </tspan><tspan fill="#1f2328">65 pull requests</tspan></text>
+<text x="16" y="2509" xml:space="preserve" fill="#6e7781"><tspan>  </tspan><tspan fill="#1f2328">64 pull requests</tspan></text>
 <text x="16" y="2533" xml:space="preserve" fill="#6e7781"><tspan fill="#1f2328">merged, last 30d</tspan></text>
-<text x="16" y="2557" xml:space="preserve" fill="#6e7781"><tspan>  </tspan><tspan fill="#1f2328">184 across 15 repositories</tspan></text>
+<text x="16" y="2557" xml:space="preserve" fill="#6e7781"><tspan>  </tspan><tspan fill="#1f2328">204 across 14 repositories</tspan></text>
 <text x="16" y="2581" xml:space="preserve" fill="#6e7781"><tspan fill="#1f2328">30-day trend</tspan></text>
-<text x="16" y="2605" xml:space="preserve" fill="#6e7781"><tspan>  </tspan><tspan fill="#1a7f37">▂▃▂</tspan><tspan fill="#d8dee4">▁▁</tspan><tspan fill="#1a7f37">▂▃▂▂</tspan><tspan fill="#d8dee4">▁▁▁▁</tspan><tspan fill="#1a7f37">▄▄▃▄</tspan><tspan fill="#d8dee4">▁</tspan><tspan fill="#1a7f37">▂▄█▄▄▇▄</tspan><tspan fill="#d8dee4">▁▁</tspan><tspan fill="#1a7f37">▃▇▃</tspan></text>
+<text x="16" y="2605" xml:space="preserve" fill="#6e7781"><tspan>  </tspan><tspan fill="#1a7f37">▃▂</tspan><tspan fill="#d8dee4">▁▁</tspan><tspan fill="#1a7f37">▂▃▂▂</tspan><tspan fill="#d8dee4">▁▁▁▁</tspan><tspan fill="#1a7f37">▄▄▃▄</tspan><tspan fill="#d8dee4">▁</tspan><tspan fill="#1a7f37">▂▄█▄▄▇▄</tspan><tspan fill="#d8dee4">▁▁</tspan><tspan fill="#1a7f37">▃▇▇▃</tspan></text>
 <text x="16" y="2629" xml:space="preserve" fill="#6e7781"><tspan fill="#1f2328">active days</tspan></text>
 <text x="16" y="2653" xml:space="preserve" fill="#6e7781"><tspan>  </tspan><tspan fill="#1f2328">21 of the last 30</tspan></text>
 <text x="16" y="2677" xml:space="preserve" fill="#6e7781"><tspan fill="#1f2328">latest public push</tspan></text>
