@@ -1,9 +1,18 @@
 """Shared terminal-window chrome for the profile SVG.
 
 The whole profile is one terminal session, rendered at two widths: a desktop
-layout and a phone layout that `<picture>` swaps in under 500px. Everything a
+layout and a phone layout that `<picture>` swaps in under 720px. Everything a
 layout needs to reflow (column budget, metrics, chrome scale) lives in Layout,
 so the content is written once and drawn twice. Pure stdlib.
+
+One palette, not two. There used to be a light variant selected with
+`prefers-color-scheme`, and it broke the width switch: GitHub wraps any
+`<picture>` carrying a color-scheme query in its own `themed-picture` element,
+which resolves the theme half of a combined query and ignores the width half,
+so a dark-theme reader got the 460px phone panel on a 1400px desktop. The two
+conditions cannot be combined reliably, and width is the one that decides
+whether the thing is legible at all. A terminal is dark anyway, and a dark
+panel reads as deliberate on a light page.
 """
 
 from dataclasses import dataclass
@@ -16,37 +25,20 @@ FONT = "ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace"
 # line never overruns the window on somebody else's machine.
 ADVANCE = 0.602
 
-THEMES = {
-    "dark": {
-        "window": "#15161e",
-        "window_edge": "#2a2b3a",
-        "glow_top": "#1b1d29",
-        "titlebar": "#1b1c26",
-        "title_text": "#6b6d80",
-        "text": "#e6edf3",
-        "dim": "#8b8fa3",
-        "prompt": "#7ee787",
-        "tilde": "#79c0ff",
-        "accent": "#79c0ff",
-        "warm": "#ffa657",
-        "green": "#39d353",
-        "rule": "#2a2b3a",
-    },
-    "light": {
-        "window": "#ffffff",
-        "window_edge": "#d0d7de",
-        "glow_top": "#fbfcfd",
-        "titlebar": "#f6f8fa",
-        "title_text": "#57606a",
-        "text": "#1f2328",
-        "dim": "#6e7781",
-        "prompt": "#1a7f37",
-        "tilde": "#0969da",
-        "accent": "#0969da",
-        "warm": "#953800",
-        "green": "#1a7f37",
-        "rule": "#d8dee4",
-    },
+COLORS = {
+    "window": "#15161e",
+    "window_edge": "#2a2b3a",
+    "glow_top": "#1b1d29",
+    "titlebar": "#1b1c26",
+    "title_text": "#6b6d80",
+    "text": "#e6edf3",
+    "dim": "#8b8fa3",
+    "prompt": "#7ee787",
+    "tilde": "#79c0ff",
+    "accent": "#79c0ff",
+    "warm": "#ffa657",
+    "green": "#39d353",
+    "rule": "#2a2b3a",
 }
 
 DOT_COLORS = ("#ff5f57", "#febc2e", "#28c840")
@@ -54,7 +46,7 @@ DOT_COLORS = ("#ff5f57", "#febc2e", "#28c840")
 
 @dataclass(frozen=True)
 class Layout:
-    name: str
+    file: str          # asset filename, referenced by the README <picture>
     width: int
     font: int
     line_h: int
@@ -79,20 +71,21 @@ class Layout:
 
 # Column budgets are deliberately a few short of what fits, so a font with a
 # wider advance than DejaVu still lands inside the window.
-# Drawn wide on purpose. The panel keeps a fixed aspect ratio, so the only way
-# to cut how far a reader scrolls is to spend width on longer lines: 82 columns
-# gave a 2.29 aspect, 120 gives 1.36, which is nearly half the scrolling at any
-# render size. It also stops the terminal sitting in a puddle of whitespace in
-# GitHub's README column.
+# 960 is the width of GitHub's README column, near enough: the profile box runs
+# ~900-980px depending on the viewport, so the panel renders about 1:1 and the
+# 15px body text stays 15px. It was 1200 before, which bought longer lines but
+# had GitHub scale the whole thing to ~0.75 and the text down to ~11px. Longer
+# lines are still the only lever against scrolling (the panel has a fixed
+# aspect ratio), so the copy is written tight rather than the panel drawn wide.
 WIDE = Layout(
-    name="", width=1200, font=15, line_h=27, pad_x=24, titlebar=36,
+    file="profile.svg", width=960, font=15, line_h=27, pad_x=24, titlebar=36,
     dot_r=6, dot_x=24, dot_gap=20, title="dylan@xtelos: ~ · zsh",
-    cols=120, label_w=12, inline_labels=True,
+    cols=96, label_w=12, inline_labels=True,
 )
 
 NARROW = Layout(
-    name="narrow-", width=460, font=15, line_h=24, pad_x=16, titlebar=30,
-    dot_r=5, dot_x=17, dot_gap=16, title="dylan@xtelos · zsh",
+    file="profile-narrow.svg", width=460, font=15, line_h=24, pad_x=16,
+    titlebar=30, dot_r=5, dot_x=17, dot_gap=16, title="dylan@xtelos · zsh",
     cols=45, label_w=0, inline_labels=False,
 )
 
@@ -103,9 +96,9 @@ def esc(s):
     return escape(s, quote=True)
 
 
-def window(layout, theme_name, height, title, body, extra_style=""):
+def window(layout, height, title, body, extra_style=""):
     """Wrap `body` (an svg fragment) in the terminal window chrome."""
-    t = THEMES[theme_name]
+    t = COLORS
     w = layout.width
     dots = "".join(
         f'<circle cx="{layout.dot_x + i * layout.dot_gap}" cy="{layout.titlebar / 2}" '
