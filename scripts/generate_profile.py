@@ -1,8 +1,15 @@
 """Generate the whole profile as one terminal session.
 
-Writes four files: {dark,light} x {desktop,narrow}. The README is a single
+Writes two files, a desktop panel and a phone one. The README is a single
 <picture> that picks the right one, so the profile page is the terminal rather
-than a banner sitting on top of markdown.
+than a banner sitting on top of markdown. There is no light variant; see
+terminal_svg for why the theme switch had to go.
+
+Copy is written to land on one line per entry at the desktop layout's 84
+columns of value width (96 columns less the 12-column label gutter). A
+description that runs over wraps to a second line and costs height in a panel
+whose height is what a reader has to scroll past, so `python3 -c` the lengths
+before adding a clause.
 
 Nothing here depends on animation to become visible, and that is deliberate.
 An earlier version typed the session out with staggered per-character opacity
@@ -22,40 +29,38 @@ import sys
 import textwrap
 
 import github_stats
-from terminal_svg import LAYOUTS, THEMES, esc, window
+from terminal_svg import COLORS, LAYOUTS, esc, window
 
 LEADER = 21        # column where dotted-leader values start
 
 TOOLS = [
-    ("argus", "call/impact graph for a million-line legacy codebase, with cited "
-              "file:line receipts instead of a grep sweep"),
-    ("aegis", "build-trust engine that compiles on the real host; unparsed and "
-              "unverified are never a pass, so it cannot report a false green"),
-    ("iris", "headless visual verification over the Chrome DevTools Protocol: "
-             "screenshots with a verdict, console errors caught at the protocol level"),
-    ("demeter", "dev-database harness that stands up, seeds, and tears down per "
-                "stack, and never wipes the thing you cannot rebuild"),
-    ("ariadne", "long-effort tracker reporting the drift between what the tracker "
-                "claims and what git says actually happened"),
-    ("delphi", "personal knowledge engine: a linked note graph with scored recall, "
-               "so hard-won context survives from one session to the next"),
+    ("argus", "call/impact graph over a million-line legacy codebase, with cited "
+              "file:line receipts"),
+    ("aegis", "build-trust engine that compiles on the real host and cannot report "
+              "a false green"),
+    ("iris", "headless visual verification over CDP: a screenshot, a verdict, "
+             "console errors"),
+    ("demeter", "dev-database harness that stands up, seeds, and tears down a stack "
+                "on demand"),
+    ("ariadne", "long-effort tracker that reports the drift between its own claims "
+                "and what git did"),
+    ("delphi", "personal knowledge engine: a linked note graph with scored recall "
+               "across sessions"),
     ("momus", "adversarial reviewer that assumes my change is broken and tries to "
-              "prove it before anything gets called done"),
+              "prove it"),
 ]
 
 SHIPPED = [
-    ("[auth]", "Multi-method 2FA end to end: authenticator-app TOTP, SMS, email, "
-               "and 30-day trusted devices. Live across 90+ newspaper sites."),
-    ("[payments]", "Provider-agnostic payment layer (Stripe, Square). Led a processor "
-                   "migration with per-customer routing and a safe, re-runnable job "
-                   "moving stored cards into a token vault."),
-    ("[genai]", "Print-ready ad artwork from a text prompt: three interchangeable "
-                "image models behind one interface, OCR text handling, and an "
-                "automated check that rejects unusable output before it ships."),
-    ("[adtech]", "Google Ad Manager integration: line items, advertisers, and "
-                 "creatives created straight from order entry."),
-    ("[solo]", "Multi-tenant classified-ads marketplace, sole developer: ad builder, "
-               "checkout funnel, payments, approvals, email."),
+    ("[auth]", "Multi-method 2FA (TOTP, SMS, email, trusted devices) on 90+ "
+               "newspaper sites"),
+    ("[payments]", "Provider-agnostic payment layer (Stripe, Square) and a live "
+                   "processor migration"),
+    ("[genai]", "Print-ready ad artwork from a text prompt: three image models "
+                "behind one interface"),
+    ("[adtech]", "Google Ad Manager line items, advertisers, and creatives straight "
+                 "from order entry"),
+    ("[solo]", "Multi-tenant classified-ads marketplace, sole developer: ad builder "
+               "to checkout"),
 ]
 
 STACK = [
@@ -74,19 +79,6 @@ ABOUT = (
     "and a generative-AI tool that makes print-ready ad artwork. Reliability "
     "first, because that's the part people only notice when it's missing."
 )
-
-JOKE = (
-    "Commitment issues? Not me. I commit early, commit often, and only "
-    "occasionally force-push something I'll regret."
-)
-
-TOOLS_INTRO = (
-    "I run AI coding agents against real production code, and I got tired of "
-    "\"trust me, it works.\" Each of these turns a category of guesswork into a "
-    "measured verdict."
-)
-
-TOOLS_OUTRO = "Source private while they grow up; ask me about any of them."
 
 
 def span(text, fill=None):
@@ -231,8 +223,8 @@ STYLE = """
 """
 
 
-def build(layout, theme_name, stats):
-    c = THEMES[theme_name]
+def build(layout, stats):
+    c = COLORS
     s = Session(layout, c)
 
     s.command("whoami")
@@ -246,24 +238,16 @@ def build(layout, theme_name, stats):
 
     s.command("cat about.txt")
     s.prose(ABOUT, c["text"])
-    s.blank()
-    s.prose(JOKE, c["dim"])
     s.end_block()
 
-    s.command("ls ~/tools")
-    s.packed([(f"{name}/", c["accent"]) for name, _ in TOOLS], "  ")
-    s.end_block()
-
-    s.command("cat ~/tools/README")
-    s.prose(TOOLS_INTRO, c["dim"])
-    s.blank()
-    s.labeled(TOOLS, c["accent"], c["text"])
-    s.blank()
-    s.prose(TOOLS_OUTRO, c["dim"])
+    # `ls -l`, not `ls` plus a README: listing the names and then describing
+    # them printed every tool twice and cost three lines to say nothing.
+    s.command("ls -l ~/tools")
+    s.labeled(TOOLS, c["accent"], c["text"], spaced=False)
     s.end_block()
 
     s.command("tail shipped.log")
-    s.labeled(SHIPPED, c["warm"], c["text"])
+    s.labeled(SHIPPED, c["warm"], c["text"], spaced=False)
     s.end_block()
 
     s.command("tail activity.log")
@@ -289,7 +273,7 @@ def build(layout, theme_name, stats):
              span(f"{stats['merged_long']} across {repos}", c["text"])),
             ("30-day trend", spark_spans(stats["spark"], c)),
             ("active days", span(f"{stats['active_days']} of the last 30", c["text"])),
-            ("latest public push", push_spans),
+            ("latest public work", push_spans),
         ],
         c["text"],
     )
@@ -300,8 +284,7 @@ def build(layout, theme_name, stats):
     s.end_block()
 
     s.cursor()
-    return window(layout, theme_name, s.height, layout.title,
-                  "\n".join(s.rows), STYLE)
+    return window(layout, s.height, layout.title, "\n".join(s.rows), STYLE)
 
 
 def main():
@@ -313,14 +296,13 @@ def main():
     assets = pathlib.Path(__file__).resolve().parent.parent / "assets"
     assets.mkdir(exist_ok=True)
     for layout in LAYOUTS:
-        for theme in ("dark", "light"):
-            path = assets / f"profile-{layout.name}{theme}.svg"
-            svg = build(layout, theme, stats)
-            if path.exists() and path.read_text() == svg:
-                print(f"unchanged {path.name}")
-                continue
-            path.write_text(svg)
-            print(f"wrote {path.name} ({len(svg)} bytes)")
+        path = assets / layout.file
+        svg = build(layout, stats)
+        if path.exists() and path.read_text() == svg:
+            print(f"unchanged {path.name}")
+            continue
+        path.write_text(svg)
+        print(f"wrote {path.name} ({len(svg)} bytes)")
 
 
 if __name__ == "__main__":
