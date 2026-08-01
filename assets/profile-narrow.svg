@@ -76,15 +76,15 @@ text { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono'
 <text x="16" y="1357" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">  sole developer: ad builder to checkout</tspan></text>
 <text x="16" y="1405" xml:space="preserve" fill="#e6edf3"><tspan fill="#7ee787">➜ </tspan><tspan fill="#79c0ff">~ </tspan><tspan>tail activity.log</tspan></text>
 <text x="16" y="1429" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">merged, last 7d</tspan></text>
-<text x="16" y="1453" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">156 pull requests</tspan></text>
+<text x="16" y="1453" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">169 pull requests</tspan></text>
 <text x="16" y="1477" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">merged, last 30d</tspan></text>
-<text x="16" y="1501" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">364 across 23 repositories</tspan></text>
+<text x="16" y="1501" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">381 across 24 repositories</tspan></text>
 <text x="16" y="1525" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">30-day trend</tspan></text>
-<text x="16" y="1549" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#39d353">▂</tspan><tspan fill="#2a2b3a">▁▁▁▁</tspan><tspan fill="#39d353">▃▃▂▃</tspan><tspan fill="#2a2b3a">▁</tspan><tspan fill="#39d353">▂▃▆▃▃▅▃</tspan><tspan fill="#2a2b3a">▁▁</tspan><tspan fill="#39d353">▂▅▅▆▃▄▅▇▄█▂</tspan></text>
+<text x="16" y="1549" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#2a2b3a">▁▁▁▁</tspan><tspan fill="#39d353">▃▃▂▃</tspan><tspan fill="#2a2b3a">▁</tspan><tspan fill="#39d353">▂▃▆▃▃▅▃</tspan><tspan fill="#2a2b3a">▁▁</tspan><tspan fill="#39d353">▂▅▅▆▃▄▅▇▄█▄▂</tspan></text>
 <text x="16" y="1573" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">active days</tspan></text>
 <text x="16" y="1597" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">23 of the last 30</tspan></text>
 <text x="16" y="1621" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">latest public work</tspan></text>
-<text x="16" y="1645" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#8b8fa3">2026-07-29</tspan><tspan>  </tspan><tspan fill="#79c0ff">xtelos/xtelos</tspan></text>
+<text x="16" y="1645" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#8b8fa3">2026-07-31</tspan><tspan>  </tspan><tspan fill="#79c0ff">Cloud-City-Computing/c2</tspan></text>
 <text x="16" y="1693" xml:space="preserve" fill="#e6edf3"><tspan fill="#7ee787">➜ </tspan><tspan fill="#79c0ff">~ </tspan><tspan>cat stack.txt</tspan></text>
 <text x="16" y="1717" xml:space="preserve" fill="#8b8fa3"><tspan fill="#79c0ff">languages</tspan></text>
 <text x="16" y="1741" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">  JavaScript · TypeScript · Python · PHP ·</tspan></text>
