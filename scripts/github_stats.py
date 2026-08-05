@@ -107,32 +107,6 @@ def sparkline(counts):
     )
 
 
-def latest_public_activity():
-    """Most recent PUBLIC event worth naming: a default-branch push or a PR.
-
-    Public timeline only, on purpose: this is the one row that names a
-    repository, and the rest of the account's work lives in private repos
-    whose names do not belong on a public profile.
-
-    Pull requests count, not just pushes, because pushes alone made this row
-    permanently empty. Merging a PR in the web UI emits a PullRequestEvent and
-    no PushEvent for the merge commit, and every branch here lands that way, so
-    a push-only filter printed "none lately" on an account that had shipped
-    public work the day before.
-    """
-    events = gh_request(
-        f"https://api.github.com/users/{LOGIN}/events/public?per_page=100"
-    )
-    for ev in events:
-        push = ev["type"] == "PushEvent" and ev["payload"].get("ref") in (
-            "refs/heads/main",
-            "refs/heads/master",
-        )
-        if push or ev["type"] == "PullRequestEvent":
-            return ev["repo"]["name"], ev["created_at"][:10]
-    return None
-
-
 def collect():
     """Everything the activity block needs, as a plain dict."""
     today = datetime.datetime.now(datetime.timezone.utc).date()
@@ -176,5 +150,4 @@ def collect():
         "repos": len(repos),
         "spark": sparkline(counts),
         "active_days": sum(1 for n in counts if n),
-        "push": latest_public_activity(),
     }
