@@ -33,36 +33,6 @@ from terminal_svg import COLORS, LAYOUTS, esc, window
 
 LEADER = 21        # column where dotted-leader values start
 
-TOOLS = [
-    ("argus", "call/impact graph over a million-line legacy codebase, with cited "
-              "file:line receipts"),
-    ("aegis", "build-trust engine that compiles on the real host and cannot report "
-              "a false green"),
-    ("iris", "headless visual verification over CDP: a screenshot, a verdict, "
-             "console errors"),
-    ("demeter", "dev-database harness that stands up, seeds, and tears down a stack "
-                "on demand"),
-    ("ariadne", "long-effort tracker that reports the drift between its own claims "
-                "and what git did"),
-    ("delphi", "personal knowledge engine: a linked note graph with scored recall "
-               "across sessions"),
-    ("momus", "adversarial reviewer that assumes my change is broken and tries to "
-              "prove it"),
-]
-
-SHIPPED = [
-    ("[auth]", "Multi-method 2FA (TOTP, SMS, email, trusted devices) on 90+ "
-               "newspaper sites"),
-    ("[payments]", "Provider-agnostic payment layer (Stripe, Square) and a live "
-                   "processor migration"),
-    ("[genai]", "Print-ready ad artwork from a text prompt: three image models "
-                "behind one interface"),
-    ("[adtech]", "Google Ad Manager line items, advertisers, and creatives straight "
-                 "from order entry"),
-    ("[solo]", "Multi-tenant classified-ads marketplace, sole developer: ad builder "
-               "to checkout"),
-]
-
 STACK = [
     ("languages", "JavaScript · TypeScript · Python · PHP · SQL"),
     ("frontend", "React · Next.js · single-page apps that stay fast"),
@@ -238,16 +208,6 @@ def build(layout, stats):
 
     s.command("cat about.txt")
     s.prose(ABOUT, c["text"])
-    s.end_block()
-
-    # `ls -l`, not `ls` plus a README: listing the names and then describing
-    # them printed every tool twice and cost three lines to say nothing.
-    s.command("ls -l ~/tools")
-    s.labeled(TOOLS, c["accent"], c["text"], spaced=False)
-    s.end_block()
-
-    s.command("tail shipped.log")
-    s.labeled(SHIPPED, c["warm"], c["text"], spaced=False)
     s.end_block()
 
     s.command("tail activity.log")
