@@ -24,7 +24,9 @@ Run manually after editing copy; the nightly workflow reruns it for the
 activity numbers. Output is committed.
 """
 
+import hashlib
 import pathlib
+import re
 import sys
 import textwrap
 
@@ -247,22 +249,57 @@ def build(layout, stats):
     return window(layout, s.height, layout.title, "\n".join(s.rows), STYLE)
 
 
+def stamp_readme(readme, digests):
+    """Point the README <picture> at ?v=<content hash> for each asset.
+
+    The asset paths never change, so a client that cached one holds it under a
+    URL the next version reuses. That is not hypothetical: a merge that removed
+    two whole sections went live on main and the profile page kept serving the
+    previous commit's SVG, byte for byte, through a hard refresh, while the same
+    URL fetched directly returned the new one. Keying the URL to the content
+    means a changed panel is a different URL and a stale copy can never be
+    served for it, while an unchanged panel keeps its hash and stays cacheable.
+
+    Only the two URLs are rewritten. The alt text is left alone: it has to stay
+    on one line, because a blank line inside that raw HTML block ends the block
+    and drops the <img> entirely.
+    """
+    text = original = readme.read_text()
+    for name, digest in digests.items():
+        # `profile\.svg` cannot match `profile-narrow.svg`; the escaped dot
+        # pins the boundary, so the two substitutions stay independent.
+        pattern = re.escape(name) + r"(?:\?v=[0-9a-f]+)?"
+        text = re.sub(pattern, f"{name}?v={digest}", text)
+    if text == original:
+        print("unchanged README.md")
+        return
+    readme.write_text(text)
+    print("stamped README.md")
+
+
 def main():
     # No "updated <date>" in the titlebar on purpose. The generator only
     # rewrites a file whose content changed, so a generation stamp would
     # freeze on the last day the numbers moved and then read as stale. The
     # `latest public push` row is the freshness signal, and it is a real one.
     stats = github_stats.collect()
-    assets = pathlib.Path(__file__).resolve().parent.parent / "assets"
+    root = pathlib.Path(__file__).resolve().parent.parent
+    assets = root / "assets"
     assets.mkdir(exist_ok=True)
+    digests = {}
     for layout in LAYOUTS:
         path = assets / layout.file
         svg = build(layout, stats)
+        # Hash what the file will hold, not what changed, so an unchanged asset
+        # keeps the hash the README already carries.
+        digests[f"assets/{layout.file}"] = hashlib.sha256(
+            svg.encode()).hexdigest()[:8]
         if path.exists() and path.read_text() == svg:
             print(f"unchanged {path.name}")
             continue
         path.write_text(svg)
         print(f"wrote {path.name} ({len(svg)} bytes)")
+    stamp_readme(root / "README.md", digests)
 
 
 if __name__ == "__main__":
