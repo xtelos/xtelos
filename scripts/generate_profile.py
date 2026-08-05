@@ -197,19 +197,10 @@ def build(layout, stats):
     s.end_block()
 
     s.command("tail activity.log")
-    # Values in this block are not wrapped, so they have to be sized to the
-    # layout: a repo name long enough to overrun the phone window would print
-    # straight out through the side of it.
-    budget = (layout.cols - LEADER - 2) if layout.inline_labels else (layout.cols - 2)
-    push = stats["push"]
-    if push:
-        repo, when = push[0], push[1]
-        room = budget - len(when) - 2
-        if len(repo) > room:
-            repo = repo[: max(1, room - 1)] + "…"
-        push_spans = span(when, c["dim"]) + span("  ") + span(repo, c["accent"])
-    else:
-        push_spans = span("none lately; private repos, mostly"[:budget], c["dim"])
+    # Values in this block are not wrapped, so a value long enough to overrun
+    # the phone window would print straight out through the side of it. Every
+    # row here is a short count, so that is a constraint on future rows rather
+    # than a live risk.
     unit = "pull request" + ("" if stats["merged_short"] == 1 else "s")
     repos = f"{stats['repos']} repositor" + ("y" if stats["repos"] == 1 else "ies")
     s.dotted(
@@ -219,7 +210,6 @@ def build(layout, stats):
              span(f"{stats['merged_long']} across {repos}", c["text"])),
             ("30-day trend", spark_spans(stats["spark"], c)),
             ("active days", span(f"{stats['active_days']} of the last 30", c["text"])),
-            ("latest public work", push_spans),
         ],
         c["text"],
     )
@@ -265,7 +255,9 @@ def main():
     # No "updated <date>" in the titlebar on purpose. The generator only
     # rewrites a file whose content changed, so a generation stamp would
     # freeze on the last day the numbers moved and then read as stale. The
-    # `latest public push` row is the freshness signal, and it is a real one.
+    # rolling 7- and 30-day windows carry their own recency instead: they are
+    # relative to the run, so a stale panel is one whose numbers stopped
+    # moving, which is the honest reading of it.
     stats = github_stats.collect()
     root = pathlib.Path(__file__).resolve().parent.parent
     assets = root / "assets"
