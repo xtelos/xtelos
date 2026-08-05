@@ -79,13 +79,13 @@ class Layout:
 # aspect ratio), so the copy is written tight rather than the panel drawn wide.
 WIDE = Layout(
     file="profile.svg", width=960, font=15, line_h=27, pad_x=24, titlebar=36,
-    dot_r=6, dot_x=24, dot_gap=20, title="dylan@xtelos: ~ · zsh",
+    dot_r=6, dot_x=24, dot_gap=20, title="dylan@scs: ~ · zsh",
     cols=96, label_w=12, inline_labels=True,
 )
 
 NARROW = Layout(
     file="profile-narrow.svg", width=460, font=15, line_h=24, pad_x=16,
-    titlebar=30, dot_r=5, dot_x=17, dot_gap=16, title="dylan@xtelos · zsh",
+    titlebar=30, dot_r=5, dot_x=17, dot_gap=16, title="dylan@scs · zsh",
     cols=45, label_w=0, inline_labels=False,
 )
 
