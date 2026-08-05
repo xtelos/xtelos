@@ -19,6 +19,6 @@
      returned the new one. The nightly workflow commits README.md alongside the assets for the
      same reason: an asset committed without its README points the page at the previous hash. -->
 <picture>
-  <source media="(max-width: 720px)" srcset="assets/profile-narrow.svg?v=f33d3f01">
-  <img src="assets/profile.svg?v=f0da04df" alt="Terminal session. whoami: Dylan Fodor, Full-Stack Developer at Software Consulting Services. cat about.txt: I build and modernize the software newspapers use to sell and produce advertising. I lean front-end but work the whole stack, and the work I'm proudest of is the load-bearing kind: two-factor auth, payment processing, and a generative-AI tool that makes print-ready ad artwork. Reliability first, because that's the part people only notice when it's missing. tail activity.log: recent merged-PR counts, a 30-day trend, and the latest public push, refreshed nightly. cat stack.txt: JavaScript, TypeScript, Python, PHP, SQL; React and Next.js; Node.js, Flask, Express, REST and JSON-RPC APIs; PostgreSQL, MySQL, MongoDB, Redis; AWS, Docker, CI/CD, Linux; LLM integration, image generation, speech to text.">
+  <source media="(max-width: 720px)" srcset="assets/profile-narrow.svg?v=ef3d82ea">
+  <img src="assets/profile.svg?v=182f21c7" alt="Terminal session. whoami: Dylan Fodor, Apps Dev at Software Consulting Services. tail activity.log: recent merged-PR counts, a 30-day trend, and the latest public push, refreshed nightly. cat stack.txt: JavaScript, TypeScript, Python, PHP, SQL; React and Next.js; Node.js, Flask, Express, REST and JSON-RPC APIs; PostgreSQL, MySQL, MongoDB, Redis; AWS, Docker, CI/CD, Linux; LLM integration, image generation, speech to text.">
 </picture>

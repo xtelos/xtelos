@@ -44,14 +44,6 @@ STACK = [
     ("ai", "LLM integration · image generation · speech to text"),
 ]
 
-ABOUT = (
-    "I build and modernize the software newspapers use to sell and produce "
-    "advertising. I lean front-end but work the whole stack, and the work I'm "
-    "proudest of is the load-bearing kind: two-factor auth, payment processing, "
-    "and a generative-AI tool that makes print-ready ad artwork. Reliability "
-    "first, because that's the part people only notice when it's missing."
-)
-
 
 def span(text, fill=None):
     f = f' fill="{fill}"' if fill else ""
@@ -113,10 +105,6 @@ class Session:
 
     def end_block(self):
         self.blank()
-
-    def prose(self, text, fill):
-        for line in textwrap.wrap(text, self.L.cols):
-            self.out(span(line, fill))
 
     def packed(self, items, sep):
         """Colored items flowed across as many lines as the width needs."""
@@ -202,14 +190,10 @@ def build(layout, stats):
     s.command("whoami")
     s.packed(
         [("Dylan Fodor", c["text"]),
-         ("Full-Stack Developer", c["text"]),
+         ("Apps Dev", c["text"]),
          ("Software Consulting Services", c["dim"])],
         " · ",
     )
-    s.end_block()
-
-    s.command("cat about.txt")
-    s.prose(ABOUT, c["text"])
     s.end_block()
 
     s.command("tail activity.log")
