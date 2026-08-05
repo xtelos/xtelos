@@ -37,9 +37,9 @@ text { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono'
 <text x="16" y="373" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">missing.</tspan></text>
 <text x="16" y="421" xml:space="preserve" fill="#e6edf3"><tspan fill="#7ee787">➜ </tspan><tspan fill="#79c0ff">~ </tspan><tspan>tail activity.log</tspan></text>
 <text x="16" y="445" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">merged, last 7d</tspan></text>
-<text x="16" y="469" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">143 pull requests</tspan></text>
+<text x="16" y="469" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">144 pull requests</tspan></text>
 <text x="16" y="493" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">merged, last 30d</tspan></text>
-<text x="16" y="517" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">455 across 25 repositories</tspan></text>
+<text x="16" y="517" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">456 across 25 repositories</tspan></text>
 <text x="16" y="541" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">30-day trend</tspan></text>
 <text x="16" y="565" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#39d353">▃▃▂▃</tspan><tspan fill="#2a2b3a">▁</tspan><tspan fill="#39d353">▂▃▆▃▃▅▃</tspan><tspan fill="#2a2b3a">▁▁</tspan><tspan fill="#39d353">▂▅▅▆▃▄▅▇▄█▄▂▂▇▄▄</tspan></text>
 <text x="16" y="589" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">active days</tspan></text>

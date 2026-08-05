@@ -34,7 +34,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/profile.svg assets/profile-narrow.svg
+          # README.md belongs in this commit, not just the assets. The
+          # generator stamps the <picture> URLs with a hash of each asset's
+          # content to defeat client caching, so an asset committed without
+          # its README leaves the page pointing at the previous hash and
+          # every client keeps serving the copy it already has.
+          git add assets/profile.svg assets/profile-narrow.svg README.md
           if git diff --cached --quiet; then
             echo "No changes."
             exit 0

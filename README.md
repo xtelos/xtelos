@@ -10,8 +10,15 @@
      the 460px phone panel on a full-width desktop. One dark panel now serves both GitHub themes.
      The breakpoint is 720px because the desktop panel is drawn 960px wide: a column narrower than
      that scales it down, and by ~700px the text is under 11px. Below the breakpoint the 460px
-     narrow variant renders at its own size instead, which is legible. -->
+     narrow variant renders at its own size instead, which is legible.
+     The ?v= on each src is a hash of that asset's contents, written by the generator; do not
+     strip it and do not hand-edit it. The asset paths never change, so without it a client that
+     cached one holds it under the URL the next version reuses. That is not hypothetical: a merge
+     that removed two whole sections went live on main and this page kept serving the previous
+     commit's SVG, byte for byte, through a hard refresh, while the same URL fetched directly
+     returned the new one. The nightly workflow commits README.md alongside the assets for the
+     same reason: an asset committed without its README points the page at the previous hash. -->
 <picture>
-  <source media="(max-width: 720px)" srcset="assets/profile-narrow.svg">
-  <img src="assets/profile.svg" alt="Terminal session. whoami: Dylan Fodor, Full-Stack Developer at Software Consulting Services. cat about.txt: I build and modernize the software newspapers use to sell and produce advertising. I lean front-end but work the whole stack, and the work I'm proudest of is the load-bearing kind: two-factor auth, payment processing, and a generative-AI tool that makes print-ready ad artwork. Reliability first, because that's the part people only notice when it's missing. tail activity.log: recent merged-PR counts, a 30-day trend, and the latest public push, refreshed nightly. cat stack.txt: JavaScript, TypeScript, Python, PHP, SQL; React and Next.js; Node.js, Flask, Express, REST and JSON-RPC APIs; PostgreSQL, MySQL, MongoDB, Redis; AWS, Docker, CI/CD, Linux; LLM integration, image generation, speech to text.">
+  <source media="(max-width: 720px)" srcset="assets/profile-narrow.svg?v=f33d3f01">
+  <img src="assets/profile.svg?v=f0da04df" alt="Terminal session. whoami: Dylan Fodor, Full-Stack Developer at Software Consulting Services. cat about.txt: I build and modernize the software newspapers use to sell and produce advertising. I lean front-end but work the whole stack, and the work I'm proudest of is the load-bearing kind: two-factor auth, payment processing, and a generative-AI tool that makes print-ready ad artwork. Reliability first, because that's the part people only notice when it's missing. tail activity.log: recent merged-PR counts, a 30-day trend, and the latest public push, refreshed nightly. cat stack.txt: JavaScript, TypeScript, Python, PHP, SQL; React and Next.js; Node.js, Flask, Express, REST and JSON-RPC APIs; PostgreSQL, MySQL, MongoDB, Redis; AWS, Docker, CI/CD, Linux; LLM integration, image generation, speech to text.">
 </picture>
