@@ -19,6 +19,6 @@
      returned the new one. The nightly workflow commits README.md alongside the assets for the
      same reason: an asset committed without its README points the page at the previous hash. -->
 <picture>
-  <source media="(max-width: 720px)" srcset="assets/profile-narrow.svg?v=30cfb7aa">
-  <img src="assets/profile.svg?v=28ab8fee" alt="Terminal session. whoami: Dylan Fodor, Apps Dev at Software Consulting Services. tail activity.log: recent merged-PR counts, a 30-day trend, and active-day totals, refreshed nightly. cat stack.txt: JavaScript, TypeScript, Python, PHP, SQL; React and Next.js; Node.js, Flask, Express, REST and JSON-RPC APIs; PostgreSQL, MySQL, MongoDB, Redis; AWS, Docker, CI/CD, Linux; LLM integration, image generation, speech to text.">
+  <source media="(max-width: 720px)" srcset="assets/profile-narrow.svg?v=db2429d2">
+  <img src="assets/profile.svg?v=89a3b603" alt="Terminal session. whoami: Dylan Fodor, Apps Dev at Software Consulting Services. tail activity.log: recent merged-PR counts, a 30-day trend, and active-day totals, refreshed nightly. cat stack.txt: JavaScript, TypeScript, Python, PHP, SQL; React and Next.js; Node.js, Flask, Express, REST and JSON-RPC APIs; PostgreSQL, MySQL, MongoDB, Redis; AWS, Docker, CI/CD, Linux; LLM integration, image generation, speech to text.">
 </picture>
