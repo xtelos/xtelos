@@ -27,11 +27,11 @@ text { font-family: ui-monospace, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono'
 <text x="16" y="109" xml:space="preserve" fill="#8b8fa3"><tspan fill="#8b8fa3">Software Consulting Services</tspan></text>
 <text x="16" y="157" xml:space="preserve" fill="#e6edf3"><tspan fill="#7ee787">➜ </tspan><tspan fill="#79c0ff">~ </tspan><tspan>tail activity.log</tspan></text>
 <text x="16" y="181" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">merged, last 7d</tspan></text>
-<text x="16" y="205" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">110 pull requests</tspan></text>
+<text x="16" y="205" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">85 pull requests</tspan></text>
 <text x="16" y="229" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">merged, last 30d</tspan></text>
-<text x="16" y="253" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">514 across 28 repositories</tspan></text>
+<text x="16" y="253" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">521 across 28 repositories</tspan></text>
 <text x="16" y="277" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">30-day trend</tspan></text>
-<text x="16" y="301" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#39d353">▃▆▃▃▅▃</tspan><tspan fill="#2a2b3a">▁▁</tspan><tspan fill="#39d353">▂▅▅▆▃▄▅▇▄█▄▂▂▇▄█▄▅▃▃▃▂</tspan></text>
+<text x="16" y="301" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#39d353">▆▃▃▅▃</tspan><tspan fill="#2a2b3a">▁▁</tspan><tspan fill="#39d353">▂▅▅▆▃▄▅▇▄█▄▂▂▇▄█▄▅▃▃▃▄▂</tspan></text>
 <text x="16" y="325" xml:space="preserve" fill="#8b8fa3"><tspan fill="#e6edf3">active days</tspan></text>
 <text x="16" y="349" xml:space="preserve" fill="#8b8fa3"><tspan>  </tspan><tspan fill="#e6edf3">28 of the last 30</tspan></text>
 <text x="16" y="397" xml:space="preserve" fill="#e6edf3"><tspan fill="#7ee787">➜ </tspan><tspan fill="#79c0ff">~ </tspan><tspan>cat stack.txt</tspan></text>
