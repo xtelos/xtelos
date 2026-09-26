@@ -20,8 +20,10 @@ command text at 0.148s showed). A browser that never runs the animation, or
 runs part of it, must still show the whole profile, so the only animation left
 is the cursor blink, and the cursor is visible with it disabled.
 
-Run manually after editing copy; the nightly workflow reruns it for the
-activity numbers. Output is committed.
+Everything drawn is static copy, so output only changes when this file does.
+Run it after editing copy and commit README.md with the assets. The nightly
+workflow reruns it too, which is a no-op unless someone committed copy without
+regenerating; then it commits the regenerated panel. Output is committed.
 """
 
 import hashlib
@@ -30,18 +32,21 @@ import re
 import sys
 import textwrap
 
-import github_stats
 from terminal_svg import COLORS, LAYOUTS, esc, window
 
-LEADER = 21        # column where dotted-leader values start
+SEP = " · "
 
+# Each value is a list of items so a row that has to wrap (the phone layout)
+# breaks between items, never inside one: "REST and JSON-RPC" / "APIs" reads
+# as two things. Keep every item under the narrow layout's 41 usable columns.
 STACK = [
-    ("languages", "JavaScript · TypeScript · Python · PHP · SQL"),
-    ("frontend", "React · Next.js · single-page apps that stay fast"),
-    ("backend", "Node.js · Flask · Express · REST and JSON-RPC APIs"),
-    ("data", "PostgreSQL · MySQL · MongoDB · Redis"),
-    ("infra", "AWS · Docker · CI/CD · Linux"),
-    ("ai", "LLM integration · image generation · speech to text"),
+    ("languages", ["Python", "JavaScript", "TypeScript", "PHP", "SQL"]),
+    ("ai", ["LLM integration (Gemini, OpenAI)", "evals",
+            "MCP tools for coding agents"]),
+    ("backend", ["FastAPI", "Node.js", "REST and JSON-RPC APIs"]),
+    ("frontend", ["JavaScript single-page apps", "React", "Next.js"]),
+    ("data", ["PostgreSQL", "MySQL"]),
+    ("infra", ["GitHub Actions CI", "Docker", "Linux"]),
 ]
 
 
@@ -50,17 +55,27 @@ def span(text, fill=None):
     return f"<tspan{f}>{esc(text)}</tspan>"
 
 
-def spark_spans(spark, colors):
-    """Colour the sparkline's empty days apart from its active ones, in runs."""
-    out, run, empty = [], "", spark[:1] == github_stats.BASELINE
-    for ch in spark:
-        is_empty = ch == github_stats.BASELINE
-        if is_empty != empty:
-            out.append(span(run, colors["rule"] if empty else colors["green"]))
-            run, empty = "", is_empty
-        run += ch
-    out.append(span(run, colors["rule"] if empty else colors["green"]))
-    return "".join(out)
+def wrap_items(items, width):
+    """Join items with SEP, breaking lines only between items.
+
+    A wrapped line ends with a trailing middot so the reader can see the row
+    continues. An item longer than `width` on its own falls back to textwrap
+    rather than overrunning the window.
+    """
+    lines, line = [], ""
+    for item in items:
+        candidate = f"{line}{SEP}{item}" if line else item
+        # Reserve room for the trailing " ·" a continued line carries.
+        if line and len(candidate) + len(SEP.rstrip()) > width:
+            lines.append(line + SEP.rstrip())
+            line = item
+        else:
+            line = candidate
+        if len(line) > width:
+            *head, line = textwrap.wrap(line, width)
+            lines.extend(head)
+    lines.append(line)
+    return lines
 
 
 class Session:
@@ -124,39 +139,26 @@ class Session:
             self.out("".join(line))
 
     def labeled(self, pairs, label_fill, value_fill, spaced=True):
-        """label + description rows; the narrow layout stacks them instead.
+        """label + item-list rows; the narrow layout stacks them instead.
 
         `spaced` only affects the stacked form, where entries that wrap need a
         blank between them to stay legible and one-liners do not.
         """
         L = self.L
         if L.inline_labels:
-            for label, value in pairs:
-                wrapped = textwrap.wrap(value, L.cols - L.label_w) or [""]
+            for label, items in pairs:
+                wrapped = wrap_items(items, L.cols - L.label_w)
                 self.out(span(label.ljust(L.label_w), label_fill)
                          + span(wrapped[0], value_fill))
                 for cont in wrapped[1:]:
                     self.out(span(" " * L.label_w + cont, value_fill))
         else:
-            for i, (label, value) in enumerate(pairs):
+            for i, (label, items) in enumerate(pairs):
                 if i and spaced:
                     self.blank()
                 self.out(span(label, label_fill))
-                for cont in textwrap.wrap(value, L.cols - 2):
+                for cont in wrap_items(items, L.cols - 2):
                     self.out(span("  " + cont, value_fill))
-
-    def dotted(self, pairs, label_fill):
-        """Dotted-leader rows; the narrow layout drops the value below."""
-        L = self.L
-        for label, value_spans in pairs:
-            if L.inline_labels:
-                leader = "·" * max(1, LEADER - len(label))
-                self.out(span(f"{label} ", label_fill)
-                         + span(leader, self.c["rule"])
-                         + span(" ") + value_spans)
-            else:
-                self.out(span(label, label_fill))
-                self.out(span("  ") + value_spans)
 
     def cursor(self):
         c = self.c
@@ -183,7 +185,7 @@ STYLE = """
 """
 
 
-def build(layout, stats):
+def build(layout):
     c = COLORS
     s = Session(layout, c)
 
@@ -193,25 +195,6 @@ def build(layout, stats):
          ("Apps Dev", c["text"]),
          ("Software Consulting Services", c["dim"])],
         " · ",
-    )
-    s.end_block()
-
-    s.command("tail activity.log")
-    # Values in this block are not wrapped, so a value long enough to overrun
-    # the phone window would print straight out through the side of it. Every
-    # row here is a short count, so that is a constraint on future rows rather
-    # than a live risk.
-    unit = "pull request" + ("" if stats["merged_short"] == 1 else "s")
-    repos = f"{stats['repos']} repositor" + ("y" if stats["repos"] == 1 else "ies")
-    s.dotted(
-        [
-            ("merged, last 7d", span(f"{stats['merged_short']} {unit}", c["text"])),
-            ("merged, last 30d",
-             span(f"{stats['merged_long']} across {repos}", c["text"])),
-            ("30-day trend", spark_spans(stats["spark"], c)),
-            ("active days", span(f"{stats['active_days']} of the last 30", c["text"])),
-        ],
-        c["text"],
     )
     s.end_block()
 
@@ -253,19 +236,16 @@ def stamp_readme(readme, digests):
 
 def main():
     # No "updated <date>" in the titlebar on purpose. The generator only
-    # rewrites a file whose content changed, so a generation stamp would
-    # freeze on the last day the numbers moved and then read as stale. The
-    # rolling 7- and 30-day windows carry their own recency instead: they are
-    # relative to the run, so a stale panel is one whose numbers stopped
-    # moving, which is the honest reading of it.
-    stats = github_stats.collect()
+    # rewrites a file whose content changed, and nothing drawn is dynamic, so
+    # a generation stamp would freeze on the day the copy last changed and
+    # then read as stale.
     root = pathlib.Path(__file__).resolve().parent.parent
     assets = root / "assets"
     assets.mkdir(exist_ok=True)
     digests = {}
     for layout in LAYOUTS:
         path = assets / layout.file
-        svg = build(layout, stats)
+        svg = build(layout)
         # Hash what the file will hold, not what changed, so an unchanged asset
         # keeps the hash the README already carries.
         digests[f"assets/{layout.file}"] = hashlib.sha256(
