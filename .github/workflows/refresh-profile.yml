@@ -18,16 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # PROFILE_TOKEN is a PAT with repo scope. The default GITHUB_TOKEN is
-      # scoped to this repository and cannot see the private repos where the
-      # work actually happens, so with it the activity block would report 1
-      # merged PR instead of 182. The generator refuses to publish in that
-      # case, which is why this step is allowed to fail loudly: a red workflow
-      # and the last good SVGs beat a profile that quietly claims nothing
-      # shipped.
+      # The panel is static copy now (the activity block that needed a
+      # PROFILE_TOKEN to read private repos is gone), so the generator needs
+      # no token or network and a normal night regenerates identical bytes
+      # and commits nothing. The run is kept as a drift guard: if copy in
+      # generate_profile.py is committed without regenerating, this commits
+      # the matching SVGs and README hashes.
       - name: Generate profile SVGs
-        env:
-          PROFILE_TOKEN: ${{ secrets.PROFILE_TOKEN }}
         run: python3 scripts/generate_profile.py
 
       - name: Commit if changed
